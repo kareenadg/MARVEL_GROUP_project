@@ -1,4 +1,4 @@
-import './Heroes.css';
+import './Forum.css';
 
 import { useContext, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';

@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
-import Heroes from './pages/Heroes';
+import Forum from './pages/Forum';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Movies from './pages/Movies';
@@ -27,10 +27,10 @@ const App = () => {
             }
           />
           <Route
-            path="/heroes"
+            path="/forum"
             element={
               <ProtectedRoute>
-                <Heroes />
+                <Forum />
               </ProtectedRoute>
             }
           />

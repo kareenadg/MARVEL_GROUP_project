@@ -5,7 +5,6 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-
   padding: 1rem 2rem;
 }
 header > .logo_header {
@@ -22,6 +21,31 @@ header > ul {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+}
+header > ul > li > a {
+  padding-bottom: 0.3rem;
+  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+  -webkit-transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+}
+header > ul > li > .active {
+  border-bottom: var(--color-highlight) solid 2px;
+}
+
+header > ul > li > .logoutbtn {
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+header > ul > li > .logoutbtn > img {
+  width: 20px;
+  filter: saturate(100%);
 }
 
 .l {

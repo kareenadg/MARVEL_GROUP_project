@@ -1,6 +1,8 @@
-import Avatar from '../ui/avatar';
 import './Profile.css';
+
 import { useState } from 'react';
+
+import Avatar from '../ui/avatar';
 import Button from '../ui/Buttons';
 
 const Profile = () => {
@@ -27,8 +29,7 @@ const Profile = () => {
         <Button
           text="Watchlist"
           action={() => {
-            setShowFavourites(false), setShowWatchlist(true), setShowComments(false)
-            ;
+            setShowFavourites(false), setShowWatchlist(true), setShowComments(false);
           }}
         />
 

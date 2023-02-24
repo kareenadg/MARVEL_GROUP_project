@@ -1,9 +1,45 @@
+.movies {
+}
+
+.filters {
+  margin: 1rem;
+}
+
+.search {
+  width: 45vw;
+  margin: 0 5rem;
+  padding: 0.7rem 0;
+  border-bottom: 3px solid black;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search > img {
+  height: 2rem;
+}
+
+.search > input {
+  font-family: 'Roboto Condensed';
+  font-size: 2rem;
+  letter-spacing: 2px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.filters > button,
+select {
+  height: 1.5rem;
+}
+
 .movies-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  margin: 4rem 2rem;
 }
 
 .movies-container > figure {
@@ -14,7 +50,7 @@
   align-items: center;
 }
 
-.movies-container > figure > img {
+.movies-container > figure > a > img {
   height: 300px;
   width: 203px;
 }

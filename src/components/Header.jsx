@@ -32,7 +32,7 @@ const Header = () => {
         )}
         {user && (
           <li>
-            <NavLink to="/heroes">Heroes</NavLink>
+            <NavLink to="/forum">Forum</NavLink>
           </li>
         )}
         {user && (

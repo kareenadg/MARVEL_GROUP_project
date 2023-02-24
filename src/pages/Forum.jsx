@@ -6,7 +6,7 @@ import { useDebounce } from 'use-debounce';
 import { UserContext } from '../context/userContext';
 import Avatar from '../ui/Avatar';
 
-const Heroes = () => {
+const Forum = () => {
   const { user } = useContext(UserContext);
   const [reviews, setReviews] = useState([]);
   const [printReviews, setPrintReviews] = useState([]);
@@ -141,4 +141,4 @@ const Heroes = () => {
   );
 };
 
-export default Heroes;
+export default Forum;

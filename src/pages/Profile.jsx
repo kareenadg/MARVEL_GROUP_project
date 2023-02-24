@@ -1,6 +1,7 @@
 import './Profile.css';
 
 import { useEffect, useState } from 'react';
+import useFetch from "../hooks/useFetch"
 
 import Avatar from '../ui/avatar';
 import Button from '../ui/Buttons';
@@ -11,6 +12,9 @@ const Profile = () => {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
+  const [favs] = useFetch("https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies");
+  const [watchlist] = useFetch("https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies");
+
 
   const getForumInfo = async () => {
     const res = await fetch('https://63f885816978b1f9105b3d9e.mockapi.io/reviews');
@@ -23,6 +27,18 @@ const Profile = () => {
     const filter = comments.filter((comment) => comment.username.includes(keyword));
     setFilteredComments(filter);
   };
+
+  const deleteComments = (id) => {
+    fetch(`https://63f885816978b1f9105b3d9e.mockapi.io/reviews/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      getForumInfo();
+    });
+  };
+
 
   useEffect(() => {
     localStorage.setItem(
@@ -55,25 +71,27 @@ const Profile = () => {
           }}
         />
 
-        <Button
-          text="Comments"
-          action={() => {
+        <button
+          onClick={() => {
             setShowFavourites(false),
               setShowWatchlist(false),
               setShowComments(true),
               filterComments(localStorage.getItem('user'));
-          }}
-        />
+          }}>Comments</button>
       </div>
 
       {showFavourites && (
         <div>
-          <p>Aqui habría que hacer una petición al enpoint con los favoritos</p>
+          {favs && favs.map((item) => <h2 key={item.id}> {item.title} ({item.phase})</h2>)}
         </div>
       )}
 
       {showWatchlist && (
-        <p>Aqui habría que hacer una petición al enpoint con la watchlist</p>
+        <div>
+        <div className="movies-container">
+        {favs && favs.map((item) => <figure key={item.id}><img src={item.poster} alt={item.title}/></figure>)}
+        </div>
+        </div>
       )}
 
       {showComments && (
@@ -87,6 +105,7 @@ const Profile = () => {
                 <h4>{review.date.slice(0, 10)}</h4>
                 <p>{review.review}</p>
                 <p>{review.likes}</p>
+                <button onClick={() => deleteComments(review.id)}>Delete</button>
               </div>
             ))
           ) : (

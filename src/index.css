@@ -20,6 +20,8 @@
 }
 body{
   font-family: var(--font-body);
+  width: 100vw;
+  
 }
 
 .light{

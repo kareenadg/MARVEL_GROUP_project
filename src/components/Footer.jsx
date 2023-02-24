@@ -1,6 +1,7 @@
 import './Footer.css';
 
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const Footer = () => {
   return (
@@ -16,54 +17,60 @@ const Footer = () => {
           <section className="links">
             <ul>
               <li>
-                <h3>Heroes</h3>
+                <NavLink to="/">Home</NavLink>
               </li>
               <li>
-                <h3>Home</h3>
+                <NavLink to="/movies">Forum</NavLink>
               </li>
               <li>
-                <h3>Login</h3>
+                <NavLink to="/login">Login</NavLink>
               </li>
               <li>
-                <h3>Profile</h3>
+                <NavLink to="/profile">Profile</NavLink>
               </li>
             </ul>
           </section>
         </div>
-        <div className="container">
-          <span className="lineDivision"></span>
-          <div className="underbox">
-            <section className="socials">
-              <ul>
-                <li>
+        <span className="lineDivision"></span>
+        <div className="underbox">
+          <section className="socials">
+            <ul>
+              <li>
+                <a href="https://www.marvel.com/corporate/advertising">
                   <img
                     src="https://res.cloudinary.com/dpidlverd/image/upload/v1677229606/Marvel/iconos/marketing_nagtbo.png"
                     alt="Network icon"
                   />
-                </li>
-                <li>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/Marvel/">
                   <img
                     src="https://res.cloudinary.com/dpidlverd/image/upload/v1677229607/Marvel/iconos/facebook_rnnqdo.png"
                     alt="Facebook icon"
                   />
-                </li>
-                <li>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/kareenadg/MARVEL_GROUP_project">
                   <img
                     src="https://res.cloudinary.com/dpidlverd/image/upload/v1677229606/Marvel/iconos/github_beunqm.png"
                     alt="Github icon"
                   />
-                </li>
-                <li>
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/playlist/0mYWUKxLlvP4YDMe8qke84?si=hyQpETY0SEu5cKe4MZASMg">
                   <img
                     src="https://res.cloudinary.com/dpidlverd/image/upload/v1677229605/Marvel/iconos/spotify_dbqwu1.png"
                     alt="Spotify icon"
                   />
-                </li>
-              </ul>
-            </section>
-            <div className="underText">
-              <h3>@Copyright All rights reserved.</h3>
-            </div>
+                </a>
+              </li>
+            </ul>
+          </section>
+          <div className="underText">
+            <h3>@Copyright All rights reserved.</h3>
           </div>
         </div>
       </footer>

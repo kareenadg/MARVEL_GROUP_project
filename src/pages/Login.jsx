@@ -22,29 +22,34 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <input
-        ref={userRef}
-        type="text"
-        placeholder="enter your name"
-        name="name"
-        id="name"
-      />
+    <div className="container">
+      <div className="inputBow">
+        <input
+          ref={userRef}
+          type="text"
+          placeholder="enter your name"
+          name="name"
+          id="name"
+        />
 
-      <input
-        ref={passRef}
-        type="password"
-        placeholder="*******"
-        name="password"
-        id="password"
-      />
-      <button
-        type="submit"
-        onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
-      >
-        login
-      </button>
-      {error && <h2>{error}</h2>}
+        <input
+          ref={passRef}
+          type="password"
+          placeholder="*******"
+          name="password"
+          id="password"
+        />
+      </div>
+
+      <div className="button">
+        <button
+          type="submit"
+          onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
+        >
+          login
+        </button>
+        {error && <h2>{error}</h2>}
+      </div>
     </div>
   );
 };

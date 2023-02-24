@@ -8,20 +8,7 @@ const Movies = () => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const phases = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Phase 5'];
   const years = [
-    '2008',
-    '2010',
-    '2011',
-    '2012',
-    '2013',
-    '2014',
-    '2015',
-    '2016',
-    '2017',
-    '2018',
-    '2019',
-    '2021',
-    '2022',
-    '2023',
+    2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023,
   ];
 
   useEffect(() => {
@@ -54,43 +41,51 @@ const Movies = () => {
 
   return (
     <div className="movies">
-      <input
-        type="text"
-        placeholder="SEARCH"
-        onChange={(ev) => filterMov(ev.target.value)}
-      />
+      <div className="search">
+        <img
+          src="https://res.cloudinary.com/dlvbfzkt9/image/upload/v1677272349/MARVEL/magnifying-glass_pi3wxw.svg"
+          alt="Magnifying Glass"
+        />
+        <input
+          type="text"
+          placeholder="SEARCH"
+          onChange={(ev) => filterMov(ev.target.value)}
+        />
+      </div>
       <div className="filters">
         <button onClick={() => setFilteredMovies(movies)}>ALL</button>
 
         <select id="phases" onChange={(ev) => filteredPhase(ev.target.value)}>
-          <option value="-">- Phase</option>
+          <option value="-">- Choose Phase</option>
           {phases.map((phase) => (
-            <option value={phase}>{phase}</option>
+            <option key={phase} value={phase}>
+              {phase}
+            </option>
           ))}
         </select>
 
         <select id="years" onChange={(ev) => filteredYear(ev.target.value)}>
-          <option value="-">- Year</option>
+          <option value="-">- Choose Year</option>
           {years.map((year) => (
-            <option value={year}>{year}</option>
+            <option key={year} value={year}>
+              {year}
+            </option>
           ))}
         </select>
+      </div>
 
-        <div className="movies-container">
-          {filteredMovies.map((mov) => (
-            <figure key={mov.id}>
-              <img
-                src={mov.poster}
-                alt={mov.title}
-                onClick={() => <Link to={`/movies/${mov.id}`}></Link>}
-              />
-              <h3>{mov.title}</h3>
-              <button>＋</button>
-              <button>♥️</button>
-              <figcaption>{mov.year}</figcaption>
-            </figure>
-          ))}
-        </div>
+      <div className="movies-container">
+        {filteredMovies.map((mov) => (
+          <figure key={mov.id}>
+            <Link to={`/movies/${mov.id}`}>
+              <img src={mov.poster} alt={mov.title} />
+            </Link>
+            <h3>{mov.title}</h3>
+            <button>＋</button>
+            <button>♥️</button>
+            <figcaption>{mov.year}</figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );

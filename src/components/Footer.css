@@ -15,7 +15,7 @@ footer {
   align-items: center;
 }
 
-.links > ul > li > a{
+.links > ul > li > a {
   font-size: 1.2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -24,12 +24,12 @@ footer {
   margin-left: 20px;
 }
 
-.links > ul > li:hover{
+.links > ul > li:hover {
   border-bottom: 1px solid red;
-  transition:all 2s;
-    -webkit-transition:all 0.5s;
-    transition-timing-function: cubic-bezier(1,.46,.48,1.68);
-    -webkit-transition-timing-function: cubic-bezier(1,.46,.48,1.68);
+  transition: all 2s;
+  -webkit-transition: all 0.5s;
+  transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+  -webkit-transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
 }
 
 .logo img {

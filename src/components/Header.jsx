@@ -14,7 +14,13 @@ const Header = () => {
   const { changeTheme } = ThemeFunction();
 
   return (
-    <header className={localStorage.getItem('color') == 'dark' ? 'light' : 'dark'}>
+    <header>
+      <span className="logo_header">
+        <img
+          src="https://res.cloudinary.com/dpidlverd/image/upload/v1677238148/Marvel/585f9333cb11b227491c3581_sgwuu2.png"
+          alt="Marvel logo"
+        />
+      </span>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>

@@ -4,12 +4,18 @@ header {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
+
   padding: 1rem 2rem;
 }
-header > ul {
+header > .logo_header {
+  width: 120px;
+}
+header > .logo_header > img {
   width: 100%;
+}
+header > ul {
+  width: 40%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

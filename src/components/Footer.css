@@ -42,8 +42,8 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right:2rem;
-  margin-top:27px;
+  margin-right: 2rem;
+  margin-top: 27px;
   gap: 1.2rem;
 }
 .underText > h3 {

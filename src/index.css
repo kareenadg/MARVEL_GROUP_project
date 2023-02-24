@@ -18,18 +18,17 @@
   list-style-type: none;
   text-decoration: none;
 }
-body{
+body {
   font-family: var(--font-body);
   width: 100vw;
-  
 }
 
-.light{
+.light {
   background-color: var(--light-bg);
   color: var(--light-primary);
   transition: all ease-in-out 0.8s;
 }
-.dark{
+.dark {
   background-color: var(--dark-bg);
   color: var(--dark-primary);
   transition: all ease-in-out 0.8s;
@@ -38,6 +37,6 @@ body{
 button {
   cursor: pointer;
 }
-a{
+a {
   color: inherit;
 }

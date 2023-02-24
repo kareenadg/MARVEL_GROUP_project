@@ -18,7 +18,24 @@
   list-style-type: none;
   text-decoration: none;
 }
+body{
+  font-family: var(--font-body);
+}
+
+.light{
+  background-color: var(--light-bg);
+  color: var(--light-primary);
+  transition: all ease-in-out 0.8s;
+}
+.dark{
+  background-color: var(--dark-bg);
+  color: var(--dark-primary);
+  transition: all ease-in-out 0.8s;
+}
 
 button {
   cursor: pointer;
+}
+a{
+  color: inherit;
 }

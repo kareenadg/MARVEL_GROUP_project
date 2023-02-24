@@ -3,13 +3,18 @@ import './Header.css';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import { ThemeFunction } from '../context/themeContext';
 import { UserContext } from '../context/userContext';
 
 const Header = () => {
+  //login-logout
   const { user, logout } = useContext(UserContext);
   console.log(user);
+  //colorthemeChanger
+  const { changeTheme } = ThemeFunction();
+
   return (
-    <header>
+    <header className={localStorage.getItem('color') == 'dark' ? 'light' : 'dark'}>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -26,7 +31,6 @@ const Header = () => {
         )}
         {user && (
           <li>
-            {' '}
             <NavLink to="/profile">Profile</NavLink>
           </li>
         )}
@@ -40,6 +44,9 @@ const Header = () => {
             <button onClick={() => logout()}>Logout</button>
           </li>
         )}
+        <li>
+          <input type="checkbox" className="l" onChange={() => changeTheme()} />
+        </li>
       </ul>
     </header>
   );

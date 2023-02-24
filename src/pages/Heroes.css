@@ -5,3 +5,9 @@
   justify-content: center;
   gap: 0.5rem;
 }
+
+.forum-form > .review-card {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}

@@ -22,21 +22,21 @@ const Header = () => {
         />
       </span>
       <ul>
-        <li>
+        <li className="pages">
           <NavLink to="/">Home</NavLink>
         </li>
         {user && (
-          <li>
+          <li className="pages">
             <NavLink to="/movies">Movies</NavLink>
           </li>
         )}
         {user && (
-          <li>
-            <NavLink to="/heroes">Heroes</NavLink>
+          <li className="pages">
+            <NavLink to="/forum">Forum</NavLink>
           </li>
         )}
         {user && (
-          <li>
+          <li className="pages">
             <NavLink to="/profile">Profile</NavLink>
           </li>
         )}
@@ -47,7 +47,12 @@ const Header = () => {
         )}
         {user && (
           <li>
-            <button onClick={() => logout()}>Logout</button>
+            <button className="logoutbtn" onClick={() => logout()}>
+              <img
+                src="https://res.cloudinary.com/do7bnejaz/image/upload/v1677274492/Icons/off-button_zqckbm.png"
+                alt="logout icon"
+              />
+            </button>
           </li>
         )}
         <li>

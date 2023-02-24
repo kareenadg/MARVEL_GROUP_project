@@ -4,7 +4,6 @@ import { useRef, useState } from 'react';
 import React, { useContext } from 'react';
 
 import { UserContext } from '../context/userContext';
-import Avatar from '../ui/avatar';
 
 const Login = () => {
   const { login } = useContext(UserContext);
@@ -24,12 +23,20 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <section className="box">
-        {/* <Avatar
-          image="https://res.cloudinary.com/ddu2qdsdp/image/upload/v1677237031/Marvel/photo-1438761681033-6461ffad8d80_cuvfkr.jpg"
-          size="lg"
-        /> */}
-        <div className="inputBox">
+      <section className="box2">
+        <div className="logoMarvel">
+          <img
+            src="https://res.cloudinary.com/dpidlverd/image/upload/v1677266354/replica/shield_fyzm4d.png"
+            alt="marvel logo"
+          ></img>
+        </div>
+        <div className="emojInp">
+          <div className="emoji">
+            <img
+              src="https://res.cloudinary.com/dpidlverd/image/upload/v1677272005/replica/user_fqboi2.png"
+              alt="user emoji"
+            ></img>
+          </div>
           <input
             ref={userRef}
             type="text"
@@ -37,7 +44,14 @@ const Login = () => {
             name="name"
             id="name"
           />
-
+        </div>
+        <div className="emojInp2">
+          <div className="emoji2">
+            <img
+              src="https://res.cloudinary.com/dpidlverd/image/upload/v1677273838/replica/padlock_phq9rq.png"
+              alt="lock emoji"
+            ></img>
+          </div>
           <input
             ref={passRef}
             type="password"
@@ -46,16 +60,13 @@ const Login = () => {
             id="password"
           />
         </div>
-
-        <div className="div-btn">
-          <button
-            type="submit"
-            onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
-          >
-            login
-          </button>
-          {error && <h2>{error}</h2>}
-        </div>
+        <button
+          type="submit"
+          onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
+        >
+          login
+        </button>
+        {error && <h2>{error}</h2>}
       </section>
     </div>
   );

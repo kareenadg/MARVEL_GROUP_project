@@ -2,9 +2,9 @@
 
 :root {
   --color-highlight: #e11b22;
-  --dark-bg: #1e1c1c;
-  --dark-primary: #f5f5f5;
-  --light-bg: #f5f5f5;
+  --dark-bg: #111010;
+  --dark-primary: #e7dddd;
+  --light-bg: #ffffff;
   --light-primary: #1e1c1c;
 
   --font-heading: 'Roboto Condensed', sans-serif;

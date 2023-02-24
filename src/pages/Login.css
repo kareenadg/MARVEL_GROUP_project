@@ -1,15 +1,9 @@
-.box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .login-container {
   margin: 8rem auto;
   width: 380px;
   height: 420px;
   border-radius: 8px;
-  background: #ca5858;
+  background: #ada4a453;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -18,27 +12,100 @@
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
 }
 
-.inputBox > input {
-  width: 100%;
-  color: rgb(36, 35, 42);
-  font-size: 16px;
-  line-height: 20px;
-  min-height: 28px;
-  border-radius: 4px;
-  padding: 8px 16px;
-  border: 2px solid transparent;
-  box-shadow: rgb(0 0 0 / 12%) 0px 1px 3px, rgb(0 0 0 / 24%) 0px 1px 2px;
-  background: rgb(251, 251, 251);
-  transition: all 0.1s ease 0s;
-  margin: 20px;
+.box2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-.inputBox > input:focus {
+.logoMarvel > img {
+  height: 100px;
+  width: 100px;
+  margin-bottom: 2rem;
+  filter: invert(100);
+}
+
+.emojInp {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  width: 88%;
+  margin-right: 1.5rem;
+}
+.emoji {
+  margin: 0.5rem;
+}
+.emoji > img {
+  height: 25px;
+  width: 25px;
+}
+
+.emojInp2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  width: 88%;
+  margin-right: 1.5rem;
+}
+.emoji2 {
+  margin: 0.5rem;
+}
+.emoji2 > img {
+  height: 25px;
+  width: 25px;
+}
+input {
+  width: 70%;
+  color: rgb(36, 35, 42);
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 8px 4px;
+  border: 2px solid transparent;
+  background: transparent;
+  border-bottom: 2px solid #1c1b1bd8;
+  transition: all 0.1s ease 0s;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+input:focus {
   border: 2px solid rgb(124, 138, 255);
 }
 
-.div-btn {
+button {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  height: 3rem;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeeee4b;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+  border: none;
+  background: #fff;
+  margin: 1rem;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 400;
+}
+
+button:hover > svg {
+  font-size: 1.2em;
+  transform: translateX(-5px);
+}
+
+button:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transform: translateY(-2px);
+}
+
+.box2 > h2 {
+  text-transform: uppercase;
+  font-size: 1rem;
 }

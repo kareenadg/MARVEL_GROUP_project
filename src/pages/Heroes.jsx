@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
 import { UserContext } from '../context/userContext';
+import Avatar from '../ui/Avatar';
 
 const Heroes = () => {
   const { user } = useContext(UserContext);
@@ -17,6 +18,7 @@ const Heroes = () => {
   let today = new Date().toISOString();
   const [newReview, setNewReview] = useState({
     username: user,
+    avatar: localStorage.getItem('avatarImg'),
     date: today,
     title: '',
     review: '',
@@ -48,13 +50,13 @@ const Heroes = () => {
       }).then((res) => {
         getReviews();
       });
-      fetch('https://63f885816978b1f9105b3d9e.mockapi.io/myreviews', {
+      /*   fetch('https://63f885816978b1f9105b3d9e.mockapi.io/myreviews', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(newReview),
-      }).then((res) => res.json());
+      }).then((res) => res.json()); */
     }
   };
 
@@ -65,32 +67,47 @@ const Heroes = () => {
   return (
     <div className="forum">
       {console.log(reviews)}
-      <h1>Forum</h1>
-      <form className="forum-form" onSubmit={(ev) => createReview(ev)}>
+      <section className="forum-search">
+        <img
+          src="https://res.cloudinary.com/dlvbfzkt9/image/upload/v1677272349/MARVEL/magnifying-glass_pi3wxw.svg"
+          alt="search icon"
+        />
         <input
           type="text"
-          placeholder="ie. Avengers review"
-          onChange={(ev) => setNewReview({ ...newReview, title: ev.target.value })}
-        />
-        <textarea
-          placeholder="Introduce your review..."
-          onChange={(ev) => setNewReview({ ...newReview, review: ev.target.value })}
-        />
-        <button type="submit">Post review</button>
-      </form>
-      <h3>{error}</h3>
-
-      <input
-        type="text"
-        onChange={(ev) => {
-          setKeyword(ev.target.value);
-          setPrintReviews(
-            reviews.filter((review) =>
-              review.title.toLowerCase().includes(ev.target.value.toLowerCase()),
-            ),
-          );
-        }}
-      ></input>
+          placeholder="search"
+          onChange={(ev) => {
+            setKeyword(ev.target.value);
+            setPrintReviews(
+              reviews.filter((review) =>
+                review.title.toLowerCase().includes(ev.target.value.toLowerCase()),
+              ),
+            );
+          }}
+        ></input>
+      </section>
+      <section className="create-review">
+        <div className="form-user">
+          <Avatar
+            image={localStorage.getItem('avatarImg')}
+            name="user avatar"
+            size="md"
+          />
+          <h3>{localStorage.getItem('user')}</h3>
+        </div>
+        <form className="forum-form" onSubmit={(ev) => createReview(ev)}>
+          <input
+            type="text"
+            placeholder="ie. Avengers review"
+            onChange={(ev) => setNewReview({ ...newReview, title: ev.target.value })}
+          />
+          <textarea
+            placeholder="Introduce your review..."
+            onChange={(ev) => setNewReview({ ...newReview, review: ev.target.value })}
+          />
+          <button type="submit">Post review</button>
+        </form>
+        <h3>{error}</h3>
+      </section>
       {/*       <button onClick={() => setPrintReviews(reviews)}>Newest</button>
       <button
         onClick={() =>
@@ -99,25 +116,27 @@ const Heroes = () => {
       >
         Hottest
       </button> */}
-      {console.log('filter', printReviews)}
-      {loaded ? (
-        printReviews?.map((review) => (
-          <div className="review-card" key={review.id}>
-            <img src={review.avatar} alt={review.title} />
-            <div className="review-user">
-              <h3>{review.username}</h3>
-              <h4>{review.date.slice(0, 10)}</h4>
+      <section className="forum-content">
+        {console.log('filter', printReviews)}
+        {loaded ? (
+          printReviews.map((review) => (
+            <div className="review-card" key={review.id}>
+              <div className="review-user">
+                <Avatar image={review.avatar} name={review.title} size="md" />
+                <h3>{review.username}</h3>
+              </div>
+              <div className="review-content">
+                <h2>{review.title}</h2>
+                <h4>{review.date.slice(0, 10)}</h4>
+                <p>{review.review}</p>
+                <p>{review.likes}</p>
+              </div>
             </div>
-            <div className="review-content">
-              <h2>{review.title}</h2>
-              <p>{review.review}</p>
-              <p>{review.likes}</p>
-            </div>
-          </div>
-        ))
-      ) : (
-        <h1>Loading...</h1>
-      )}
+          ))
+        ) : (
+          <h1>Loading...</h1>
+        )}
+      </section>
     </div>
   );
 };

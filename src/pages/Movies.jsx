@@ -15,8 +15,9 @@ const Movies = () => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
       .then((res) => res.json())
       .then((res) => {
-        setMovies(res);
-        setFilteredMovies(res);
+        const sorted = res.sort((a, b) => (a.year > b.year ? -1 : 1));
+        setMovies(sorted);
+        setFilteredMovies(sorted);
       });
   }, []);
 

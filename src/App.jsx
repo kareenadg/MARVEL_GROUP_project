@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Forum from './pages/Forum';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import MovieDetail from './pages/MovieDetail';
 import Movies from './pages/Movies';
 import Profile from './pages/Profile';
 
@@ -39,6 +40,14 @@ const App = () => {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/movies/:id"
+            element={
+              <ProtectedRoute>
+                <MovieDetail />
               </ProtectedRoute>
             }
           />

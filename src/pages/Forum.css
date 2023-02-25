@@ -1,13 +1,110 @@
-.forum-form {
+.forum {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0 5rem 0;
+}
+.forum > .forum-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--light-primary);
+  width: 70vw;
+  margin-bottom: 2rem;
+}
+
+.forum > .forum-search img {
+  height: 28px;
+}
+.forum > .forum-search > input {
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 1rem 0;
+}
+
+.create-review {
+  width: 70vw;
+  background-color: white;
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 2rem;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
+}
+
+.create-review > .form-user {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.create-review > .form-user h3 {
+  font-size: 16px;
+}
+
+.create-review form input {
+  height: 30px;
+  width: 59vw;
+  padding: 0 0.5rem;
+}
+
+.create-review form textarea {
+  height: 50px;
+  width: 59vw;
+  padding: 0 0.5rem;
+}
+
+.create-review form button {
+  height: 30px;
+  width: 100px;
+  align-self: flex-end;
+  margin-top: 0.8rem;
+}
+
+.create-review > .forum-form {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.forum-form > .review-card {
+.forum-content {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   gap: 2rem;
+}
+
+.forum-content > .review-card {
+  display: flex;
+  gap: 2rem;
+  width: 70vw;
+  padding: 3rem 2rem;
+  background-color: white;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
+}
+
+.review-card > .review-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-card > .review-user > h3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.review-card > .review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }

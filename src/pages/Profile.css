@@ -15,7 +15,7 @@
   border-bottom: 1px solid black;
 }
 
-.options > button{
+.options > button {
   border: none;
   background-color: transparent;
   font-family: 'Helvetica';
@@ -26,8 +26,8 @@
   width: fit-content;
 }
 
-.options > button:hover{
- scale: 1.1;
+.options > button:hover {
+  scale: 1.1;
 }
 
 .movies-container {

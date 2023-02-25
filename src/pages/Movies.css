@@ -47,7 +47,7 @@
 }
 
 .filters > button::after,
-button::before {
+.filters > button::before {
   content: '';
   width: 0%;
   height: 2px;
@@ -57,7 +57,7 @@ button::before {
 }
 
 .filters > button:hover::after,
-button:hover::before {
+.filters > button:hover::before {
   width: 100%;
 }
 

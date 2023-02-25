@@ -48,15 +48,25 @@ const Header = () => {
         {user && (
           <li>
             <button className="logoutbtn" onClick={() => logout()}>
-              <img
-                src="https://res.cloudinary.com/do7bnejaz/image/upload/v1677274492/Icons/off-button_zqckbm.png"
-                alt="logout icon"
-              />
+              {localStorage.getItem('color') == 'dark' ? (
+                <img
+                  src="https://res.cloudinary.com/do7bnejaz/image/upload/v1677274492/Icons/off-button_zqckbm.png"
+                  alt="logout icon"
+                  className="darkicon"
+                />
+              ) : (
+                <img
+                  src="https://res.cloudinary.com/do7bnejaz/image/upload/v1677274492/Icons/off-button_zqckbm.png"
+                  alt="logout icon"
+                />
+              )}
             </button>
           </li>
         )}
         <li>
-          <input type="checkbox" className="l" onChange={() => changeTheme()} />
+          <span className="toggle">
+            <input type="checkbox" className="l" onChange={() => changeTheme()} />
+          </span>
         </li>
       </ul>
     </header>

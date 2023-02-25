@@ -4,8 +4,9 @@ import { useRef, useState } from 'react';
 import React, { useContext } from 'react';
 
 import { UserContext } from '../context/userContext';
+import Spinner from '../ui/Spinner';
 
-const Login = () => {
+function Login() {
   const { login } = useContext(UserContext);
   const userRef = useRef(null);
   const passRef = useRef(null);
@@ -46,6 +47,7 @@ const Login = () => {
                 ></img>
               </div>
               <input
+                className="loginInp"
                 ref={userRef}
                 type="text"
                 placeholder="enter your name"
@@ -61,6 +63,7 @@ const Login = () => {
                 ></img>
               </div>
               <input
+                className="loginInp"
                 ref={passRef}
                 type="password"
                 placeholder="*******"
@@ -81,6 +84,6 @@ const Login = () => {
       </section>
     </div>
   );
-};
+}
 
 export default Login;

@@ -60,7 +60,7 @@
   width: 25px;
   filter: invert(100);
 }
-input {
+.loginInp {
   width: 70%;
   color: rgb(255, 255, 255);
   font-size: 14px;
@@ -74,7 +74,7 @@ input {
   text-transform: uppercase;
 }
 
-input:focus {
+.loginInp:focus {
   border: 2px solid rgb(124, 138, 255);
   transform: scale(1.05);
   box-shadow: 13px 13px 100px #33303051, -13px -13px 100px #2f2c2c87;

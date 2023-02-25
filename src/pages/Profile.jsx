@@ -22,8 +22,8 @@ const Profile = () => {
     setFilteredComments(data);
   };
 
-  const filterComments = (keyword) => {
-    const filter = comments.filter((comment) => comment.username.includes(keyword));
+  const filterComments = () => {
+    const filter = comments.filter((comment) => comment.username.includes(localStorage.getItem('user')));
     setFilteredComments(filter);
   };
 
@@ -84,7 +84,7 @@ const Profile = () => {
             setShowFavourites(false),
               setShowWatchlist(false),
               setShowComments(true),
-              filterComments(localStorage.getItem('user'));
+              filterComments();
           }}
         >
           Comments

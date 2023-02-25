@@ -1,9 +1,16 @@
 import './Home.css';
 
-import React from 'react';
+import React, { useState } from 'react';
+
+import Carousel from '../components/Carousel';
+import { carouselContent } from '../data/carouselContent';
 
 const Home = () => {
-  return <div>Home</div>;
+  return (
+    <div className="home">
+      <Carousel images={carouselContent} />
+    </div>
+  );
 };
 
 export default Home;

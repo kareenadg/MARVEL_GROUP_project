@@ -22,51 +22,62 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <section className="box2">
-        <div className="logoMarvel">
-          <img
-            src="https://res.cloudinary.com/dpidlverd/image/upload/v1677266354/replica/shield_fyzm4d.png"
-            alt="marvel logo"
-          ></img>
-        </div>
-        <div className="emojInp">
-          <div className="emoji">
-            <img
-              src="https://res.cloudinary.com/dpidlverd/image/upload/v1677272005/replica/user_fqboi2.png"
-              alt="user emoji"
-            ></img>
-          </div>
-          <input
-            ref={userRef}
-            type="text"
-            placeholder="enter your name"
-            name="name"
-            id="name"
+    <div className="login-page">
+      <section className="video">
+        <video loop muted autoPlay>
+          <source
+            src="https://res.cloudinary.com/dpidlverd/video/upload/v1677325985/Marvel/Marvelintrocorto_fssr28.mp4"
+            type="video/mp4"
           />
+        </video>
+        <div className="login-container">
+          <section className="box2">
+            <div className="logoMarvel">
+              <img
+                src="https://res.cloudinary.com/dpidlverd/image/upload/v1677321992/Marvel/4Rsjob3_hn3ftv.png"
+                alt="marvel logo"
+              ></img>
+            </div>
+            <div className="emojInp">
+              <div className="emoji">
+                <img
+                  src="https://res.cloudinary.com/dpidlverd/image/upload/v1677272005/replica/user_fqboi2.png"
+                  alt="user emoji"
+                ></img>
+              </div>
+              <input
+                ref={userRef}
+                type="text"
+                placeholder="enter your name"
+                name="name"
+                id="name"
+              />
+            </div>
+            <div className="emojInp2">
+              <div className="emoji2">
+                <img
+                  src="https://res.cloudinary.com/dpidlverd/image/upload/v1677273838/replica/padlock_phq9rq.png"
+                  alt="lock emoji"
+                ></img>
+              </div>
+              <input
+                ref={passRef}
+                type="password"
+                placeholder="*******"
+                name="password"
+                id="password"
+              />
+            </div>
+            <button
+              className="btn"
+              type="submit"
+              onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
+            >
+              login
+            </button>
+            {error && <h2>{error}</h2>}
+          </section>
         </div>
-        <div className="emojInp2">
-          <div className="emoji2">
-            <img
-              src="https://res.cloudinary.com/dpidlverd/image/upload/v1677273838/replica/padlock_phq9rq.png"
-              alt="lock emoji"
-            ></img>
-          </div>
-          <input
-            ref={passRef}
-            type="password"
-            placeholder="*******"
-            name="password"
-            id="password"
-          />
-        </div>
-        <button
-          type="submit"
-          onClick={() => handleSubmit(userRef.current.value, passRef.current.value)}
-        >
-          login
-        </button>
-        {error && <h2>{error}</h2>}
       </section>
     </div>
   );

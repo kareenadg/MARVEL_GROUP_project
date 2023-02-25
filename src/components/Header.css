@@ -21,6 +21,7 @@ header > ul {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
+  margin-left: auto;
 }
 header > ul > li > a {
   padding-bottom: 0.3rem;
@@ -34,6 +35,7 @@ header > ul > li > .active {
 }
 
 header > ul > li > .logoutbtn {
+  width: auto;
   background: none;
   border: none;
   color: inherit;
@@ -42,83 +44,56 @@ header > ul > li > .logoutbtn {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  animation: none;
 }
+
+header > ul > li > .logoutbtn:hover {
+  box-shadow: none;
+  transform: translate(0);
+}
+
 header > ul > li > .logoutbtn > img {
   width: 20px;
   filter: saturate(100%);
 }
-
-.l {
-  display: block;
-  margin-bottom: 1.5em;
-  font-size: 1em;
+header > ul > li > .logoutbtn > .darkicon {
+  filter: invert(100%);
 }
 
-.l {
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 0.75em;
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.3) inset;
-  color: #fdea7b;
-  display: inline-flex;
+header > ul > li > .toggle {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  margin: auto;
-  padding: 0.15em;
-  width: 3em;
-  height: 1.5em;
-  transition: background-color 0.1s 0.3s ease-out, box-shadow 0.1s 0.3s ease-out;
+  justify-content: center;
+  position: relative;
+  top: 0.9rem;
+  right: 0.9rem;
+}
+header > ul > li > .toggle > .l {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
+  outline: none;
+  width: 50px;
+  height: 25px;
+  background-color: rgba(240, 248, 255, 0.177);
+  border-radius: 50px;
+  border: 2px solid rgba(108, 106, 106, 0.855);
 }
-
-.l:before,
-.l:after {
+header > ul > li > .toggle > .l:before {
   content: '';
-  display: block;
+  background-image: url('https://res.cloudinary.com/do7bnejaz/image/upload/v1677315298/Icons/icons8-captain-america-30_yr1waj.png');
+  background-size: cover;
+  background-position: top;
+  height: 25px;
+  width: 25px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  transition: all 0.9s;
 }
-
-.l:before {
-  background-color: #d7d7d7;
-  border-radius: 50%;
-  width: 1.2em;
-  height: 1.2em;
-  transition: background-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
-  z-index: 1;
+header > ul > li > .toggle > .l:checked::before {
+  transform: translate(100%);
 }
-
-.l:after {
-  background: linear-gradient(transparent 50%, rgba(0, 0, 0, 0.15) 0) 0 50% / 50% 100%,
-    repeating-linear-gradient(90deg, #bbb 0, #bbb, #bbb 20%, #999 20%, #999 40%) 0 50% /
-      50% 100%,
-    radial-gradient(circle at 50% 50%, #888 25%, transparent 26%);
-  background-repeat: no-repeat;
-  border: 0.25em solid transparent;
-  border-left: 0.4em solid #d8d8d8;
-  border-right: 0 solid transparent;
-  transition: border-left-color 0.1s 0.3s ease-out, transform 0.3s ease-out;
-  transform: translateX(-22.5%);
-  transform-origin: 25% 50%;
-  width: 1.2em;
-  height: 1em;
-  box-sizing: border-box;
-}
-/* Checked */
-.l:checked {
-  background-color: rgba(0, 0, 0, 0.45);
-  box-shadow: 0.125em 0.125em 0 0.125em rgba(0, 0, 0, 0.1) inset;
-}
-
-.l:checked:before {
-  background-color: currentColor;
-  transform: translateX(125%);
-}
-
-.l:checked:after {
-  border-left-color: currentColor;
-  transform: translateX(-2.5%) rotateY(180deg);
-}
-/* Other States */
-.l:focus {
-  /* Usually an anti-A11Y practice but set to remove an annoyance just for this demo */
-  outline: 0;
+header > ul > li > .toggle > .l:checked {
+  background-color: rgba(12, 12, 12, 0.285);
 }

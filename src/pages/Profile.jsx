@@ -23,7 +23,9 @@ const Profile = () => {
   };
 
   const filterComments = () => {
-    const filter = comments.filter((comment) => comment.username.includes(localStorage.getItem('user')));
+    const filter = comments.filter((comment) =>
+      comment.username.includes(localStorage.getItem('user')),
+    );
     setFilteredComments(filter);
   };
 

@@ -1,0 +1,17 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.spiderman {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 5rem 0 5rem;
+}

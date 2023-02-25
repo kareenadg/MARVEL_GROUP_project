@@ -28,11 +28,12 @@
   padding: 1rem 0;
   font-size: 2rem;
   outline: none;
+  color: inherit;
 }
 
 .create-review {
   width: 70vw;
-  background-color: white;
+  background-color: inherit;
   padding: 3rem 2rem;
   display: flex;
   gap: 2rem;
@@ -49,7 +50,7 @@
 
 .create-review > .form-user h3 {
   font-size: 16px;
-  color: var(--dark-bg);
+  color: inherit;
 }
 
 .create-review form {
@@ -63,7 +64,7 @@
   width: 59vw;
   padding: 0 0.5rem;
   color: var(--dark-bg);
-  border: 0.5px solid gray;
+  border: 0.5px solid #808080;
 }
 
 .create-review form textarea {
@@ -75,7 +76,7 @@
 }
 
 .create-review form h3 {
-  color: var(--dark-bg);
+  color: inherit;
   font-weight: 400;
   font-size: 16px;
 }

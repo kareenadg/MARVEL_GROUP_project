@@ -3,20 +3,23 @@ import './Forum.css';
 import { useContext, useEffect, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
+import { ThemeFunction } from '../context/themeContext';
 import { UserContext } from '../context/userContext';
 import Avatar from '../ui/Avatar';
 import Button from '../ui/Buttons';
 
 const Forum = () => {
+  const { changeTheme } = ThemeFunction();
   const { user } = useContext(UserContext);
   const [reviews, setReviews] = useState([]);
   const [printReviews, setPrintReviews] = useState([]);
-  /* const [likeReviews, setLikeReviews] = useState([]); */
   const [keyword, setKeyword] = useState('');
   const [keywordValue] = useDebounce(keyword, 500);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState('');
+
   let today = new Date().toISOString();
+
   const [newReview, setNewReview] = useState({
     username: user,
     avatar: localStorage.getItem('avatarImg'),
@@ -62,7 +65,14 @@ const Forum = () => {
     <div className="forum">
       {console.log(reviews)}
 
-      <section className="forum-search">
+      <section
+        className="forum-search"
+        style={
+          localStorage.getItem('color') == 'dark'
+            ? { borderBottomColor: '#ffffff' }
+            : { borderBottomColor: '#1e1c1c' }
+        }
+      >
         {localStorage.getItem('color') === 'dark' ? (
           <img
             src="https://res.cloudinary.com/dnb4ujbgr/image/upload/v1677347391/magnifying-glass_pi3wxw-white_qq12kv.svg"
@@ -77,6 +87,7 @@ const Forum = () => {
         <input
           type="text"
           placeholder="search"
+          className="dark"
           onChange={(ev) => {
             setKeyword(ev.target.value);
             setPrintReviews(
@@ -87,7 +98,14 @@ const Forum = () => {
           }}
         ></input>
       </section>
-      <section className="create-review">
+      <section
+        className="create-review dark"
+        style={
+          localStorage.getItem('color') == 'dark'
+            ? { backgroundColor: 'inherit' }
+            : { backgroundColor: 'inherit' }
+        }
+      >
         <div className="form-user">
           <Avatar
             image={localStorage.getItem('avatarImg')}

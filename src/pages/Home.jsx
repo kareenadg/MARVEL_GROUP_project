@@ -8,7 +8,7 @@ import { carouselContent } from '../data/carouselContent';
 const Home = () => {
   return (
     <div className="home">
-      <Carousel images={carouselContent} />
+      <Carousel className="images" images={carouselContent} />
     </div>
   );
 };

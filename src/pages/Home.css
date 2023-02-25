@@ -4,3 +4,8 @@
   align-items: center;
   flex-direction: column;
 }
+
+.images {
+  height: 541px;
+  width: 1920px;
+}

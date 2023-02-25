@@ -10,6 +10,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import MovieDetail from './pages/MovieDetail';
 import Movies from './pages/Movies';
+import NotFound from './pages/NotFound';
 import Profile from './pages/Profile';
 
 const App = () => {
@@ -52,6 +53,7 @@ const App = () => {
             }
           />
           <Route path="/login" element={<Login />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
       <Footer />

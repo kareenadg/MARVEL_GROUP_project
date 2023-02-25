@@ -2,17 +2,18 @@
   width: 100%;
   height: 60vh;
   display: flex;
+  overflow: hidden;
 }
 
 .carousel-news > .carousel-wrapper {
   position: relative;
   width: 100%;
+  white-space: nowrap;
+  transition: 2s ease;
 }
 
 .carousel-news > .carousel-wrapper > .carousel-card {
-  display: flex;
-  flex: 1;
-
+  display: inline-block;
   overflow: hidden;
   width: 100%;
   transition: all 0.9s;
@@ -25,6 +26,8 @@
   object-fit: cover;
   width: 100%;
   height: 60vh;
+  z-index: 1;
+  position: absolute;
 }
 
 .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay {
@@ -36,33 +39,19 @@
   padding: 2rem;
   justify-content: flex-end;
   flex-direction: column;
+  z-index: 2;
+  color: white;
 }
 
 .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
   font-size: 72px;
   text-transform: uppercase;
   font-family: var(--font-heading);
+  text-shadow: var(--dark-bg) 1px 0 15px;
 }
 
 .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
   font-size: 28px;
   font-weight: 400;
-}
-
-.carousel-news > .carousel-wrapper > .carousel-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 15rem;
-}
-
-.carousel-news > .carousel-wrapper > .carousel-buttons > button {
-  width: 30px;
-  background-color: transparent;
-  border: none;
-}
-
-.carousel-news > .carousel-wrapper > .carousel-buttons > button img {
-  filter: invert(100%);
-  width: 30px;
+  text-shadow: var(--dark-bg) 1px 0 15px;
 }

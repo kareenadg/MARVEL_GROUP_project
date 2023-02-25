@@ -38,7 +38,7 @@ const Forum = () => {
     ev.preventDefault();
 
     if (!newReview.title || !newReview.review) {
-      setError('Rellena todos los campos');
+      setError('Complete all the fields, please');
     } else {
       setError('');
       fetch('https://63f885816978b1f9105b3d9e.mockapi.io/reviews', {
@@ -104,9 +104,9 @@ const Forum = () => {
             placeholder="Introduce your review..."
             onChange={(ev) => setNewReview({ ...newReview, review: ev.target.value })}
           />
+          <h3>{error}</h3>
           <button type="submit">Post review</button>
         </form>
-        <h3>{error}</h3>
       </section>
       {/*       <button onClick={() => setPrintReviews(reviews)}>Newest</button>
       <button

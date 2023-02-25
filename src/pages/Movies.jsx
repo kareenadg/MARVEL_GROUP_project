@@ -39,6 +39,38 @@ const Movies = () => {
     setFilteredMovies(filter);
   };
 
+  const createFavorite = (mov) => {
+    const NewFav = {
+      username: localStorage.getItem('user'),
+      title: mov.title,
+      year: mov.year,
+      poster: mov.poster,
+    };
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(NewFav),
+    });
+  };
+
+  const createWatchlist = (mov) => {
+    const NewList = {
+      username: localStorage.getItem('user'),
+      title: mov.title,
+      year: mov.year,
+      poster: mov.poster,
+    };
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/watchlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(NewList),
+    });
+  };
+
   return (
     <div className="movies">
       <div className="search">
@@ -54,7 +86,6 @@ const Movies = () => {
       </div>
       <div className="filters">
         <button onClick={() => setFilteredMovies(movies)}>ALL</button>
-
         <select id="phases" onChange={(ev) => filteredPhase(ev.target.value)}>
           <option value="-">- Choose Phase</option>
           {phases.map((phase) => (
@@ -63,7 +94,6 @@ const Movies = () => {
             </option>
           ))}
         </select>
-
         <select id="years" onChange={(ev) => filteredYear(ev.target.value)}>
           <option value="-">- Choose Year</option>
           {years.map((year) => (
@@ -73,7 +103,6 @@ const Movies = () => {
           ))}
         </select>
       </div>
-
       <div className="movies-container">
         {filteredMovies.map((mov) => (
           <figure key={mov.id}>
@@ -81,8 +110,20 @@ const Movies = () => {
               <img src={mov.poster} alt={mov.title} />
             </Link>
             <h3>{mov.title}</h3>
-            <button>＋</button>
-            <button>♥️</button>
+            <button
+              onClick={() => {
+                createWatchlist(mov);
+              }}
+            >
+              ＋
+            </button>
+            <button
+              onClick={() => {
+                createFavorite(mov);
+              }}
+            >
+              ♥️
+            </button>
             <figcaption>{mov.year}</figcaption>
           </figure>
         ))}

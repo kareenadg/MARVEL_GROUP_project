@@ -15,11 +15,15 @@ const Movies = () => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
       .then((res) => res.json())
       .then((res) => {
-        const sorted = res.sort((a, b) => (a.year > b.year ? -1 : 1));
-        setMovies(sorted);
-        setFilteredMovies(sorted);
+        setMovies(res);
+        setFilteredMovies(res);
       });
   }, []);
+
+  const sorted = () => {
+    movies.sort((a, b) => (a.year > b.year ? -1 : 1));
+    setFilteredMovies(movies);
+  };
 
   const filteredPhase = (actualPhase) => {
     const filterPhase = movies.filter(
@@ -75,10 +79,17 @@ const Movies = () => {
   return (
     <div className="movies">
       <div className="search">
-        <img
-          src="https://res.cloudinary.com/dlvbfzkt9/image/upload/v1677272349/MARVEL/magnifying-glass_pi3wxw.svg"
-          alt="Magnifying Glass"
-        />
+        {localStorage.getItem('color') === 'dark' ? (
+          <img
+            src="https://res.cloudinary.com/dnb4ujbgr/image/upload/v1677347391/magnifying-glass_pi3wxw-white_qq12kv.svg"
+            alt="Magnifying Glass"
+          />
+        ) : (
+          <img
+            src="https://res.cloudinary.com/dlvbfzkt9/image/upload/v1677272349/MARVEL/magnifying-glass_pi3wxw.svg"
+            alt="Magnifying Glass"
+          />
+        )}
         <input
           type="text"
           placeholder="SEARCH"
@@ -86,7 +97,9 @@ const Movies = () => {
         />
       </div>
       <div className="filters">
-        <button onClick={() => setFilteredMovies(movies)}>ALL</button>
+        <h3>Sort:</h3>
+        <button onClick={() => sorted(movies)}>BY DATE</button>
+        <button onClick={() => setFilteredMovies(movies)}>CHRONOLOGICALLY</button>
         <select id="phases" onChange={(ev) => filteredPhase(ev.target.value)}>
           <option value="-">- Choose Phase</option>
           {phases.map((phase) => (

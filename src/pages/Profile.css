@@ -4,8 +4,9 @@
   margin: 2rem 2rem;
   padding: 2rem 6rem;
   gap: 1rem;
-  background-color: rgb(221, 189, 251);
   border-radius: 5px;
+  font-family: inherit;
+  color: inherit
 }
 
 .options {
@@ -18,16 +19,18 @@
 .options > button {
   border: none;
   background-color: transparent;
-  font-family: 'Helvetica';
+  color: inherit;
+  font-family: inherit;
   font-size: 1rem;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 3px;
   width: fit-content;
+  transition: all 0.5s;
 }
 
 .options > button:hover {
-  scale: 1.1;
+  scale: 1.05;
 }
 
 .movies-container {
@@ -49,4 +52,34 @@
 .movies-container > figure > img {
   height: 300px;
   width: 203px;
+}
+
+
+
+.review-card {
+  display: flex;
+  gap: 2rem;
+  width: 70vw;
+  padding: 3rem 2rem;
+  background-color: white;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
+}
+
+.review-card > .review-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-card > .review-user > h3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.review-card > .review-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }

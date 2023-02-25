@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 import useFetch from '../hooks/useFetch';
 import Avatar from '../ui/avatar';
-import Button from '../ui/Buttons';
 
 const Profile = () => {
   const [showFavourites, setShowFavourites] = useState(true);
@@ -12,7 +11,8 @@ const Profile = () => {
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
-  const [favs] = useFetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies');
+  const [filteredFavs, setFilteredFavs] = useState([]);
+  const [favs] = useFetch('https://63f9dd59473885d837d3ef84.mockapi.io/favorites');
   const [watchlist] = useFetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies');
 
   const getForumInfo = async () => {
@@ -27,6 +27,11 @@ const Profile = () => {
     setFilteredComments(filter);
   };
 
+  const filterFavs = (keyword) => {
+    const filter = favs.filter((fav) => fav.username.includes(keyword));
+    setFilteredFavs(filter);
+  };
+
   const deleteComments = (id) => {
     fetch(`https://63f885816978b1f9105b3d9e.mockapi.io/reviews/${id}`, {
       method: 'DELETE',
@@ -34,7 +39,7 @@ const Profile = () => {
         'Content-Type': 'application/json',
       },
     }).then((res) => {
-      getForumInfo();
+      filterComments();
     });
   };
 
@@ -55,19 +60,24 @@ const Profile = () => {
       />
       <h2>{localStorage.getItem('user')}</h2>
       <div className="options">
-        <Button
-          text="Favourites"
-          action={() => {
-            setShowFavourites(true), setShowWatchlist(false), setShowComments(false);
+        <button
+          onClick={() => {
+            setShowFavourites(true),
+              setShowWatchlist(false),
+              setShowComments(false),
+              filterFavs(localStorage.getItem('user'));
           }}
-        />
+        >
+          Favourites
+        </button>
 
-        <Button
-          text="Watchlist"
-          action={() => {
+        <button
+          onClick={() => {
             setShowFavourites(false), setShowWatchlist(true), setShowComments(false);
           }}
-        />
+        >
+          Watchlist
+        </button>
 
         <button
           onClick={() => {
@@ -82,48 +92,51 @@ const Profile = () => {
       </div>
 
       {showFavourites && (
-        <div>
+        <div className="movies-container">
           {favs &&
             favs.map((item) => (
-              <h2 key={item.id}>
-                {' '}
-                {item.title} ({item.phase})
-              </h2>
+              <figure key={item.id}>
+                <img src={item.poster} alt={item.title} />
+                <h3>{item.title}</h3>
+              </figure>
             ))}
         </div>
       )}
 
       {showWatchlist && (
-        <div>
-          <div className="movies-container">
-            {favs &&
-              favs.map((item) => (
-                <figure key={item.id}>
-                  <img src={item.poster} alt={item.title} />
-                </figure>
-              ))}
-          </div>
+        <div className="movies-container">
+          {watchlist &&
+            watchlist.map((item) => (
+              <figure key={item.id}>
+                <img src={item.poster} alt={item.title} />
+                <h3>{item.title}</h3>
+              </figure>
+            ))}
         </div>
       )}
 
       {showComments && (
-        <div>
+        <section className="forum-content">
           {filteredComments.length ? (
             filteredComments.map((review) => (
-              <div key={review.id}>
-                <h2>{review.title}</h2>
-                <img src={review.avatar} alt={review.title} />
-                <h3>{review.username}</h3>
-                <h4>{review.date.slice(0, 10)}</h4>
-                <p>{review.review}</p>
-                <p>{review.likes}</p>
-                <button onClick={() => deleteComments(review.id)}>Delete</button>
+              <div className="review-card" key={review.id}>
+                <div className="review-user">
+                  <Avatar image={review.avatar} name={review.title} size="md" />
+                  <h3>{review.username}</h3>
+                </div>
+                <div className="review-content">
+                  <h2>{review.title}</h2>
+                  <h4>{review.date.slice(0, 10)}</h4>
+                  <p>{review.review}</p>
+                  <p>{review.likes}</p>
+                  <button onClick={() => deleteComments(review.id)}>Delete</button>
+                </div>
               </div>
             ))
           ) : (
             <h4> Post some comments in our forum</h4>
           )}
-        </div>
+        </section>
       )}
     </main>
   );

@@ -1,0 +1,59 @@
+.detailcontainer {
+  padding: 4rem 3rem;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.detailcontainer > .moviecard {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.detailcontainer > .moviecard > .movieposter {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+}
+.detailcontainer > .moviecard > .movieposter > img {
+  object-fit: cover;
+  border-radius: 4px;
+}
+.detailcontainer > .moviecard > .movieinfo {
+  max-width: 50rem;
+  color: inherit;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.detailcontainer > .moviecard > .movieinfo > h2 {
+  font-family: var(--font-heading);
+  color: var(--color-highlight);
+  border-bottom: var(--color-highlight) 1px solid;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 28px;
+}
+.detailcontainer > .moviecard > .movieinfo > .h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-align: justify;
+  color: var(--color-highlight);
+  text-transform: uppercase;
+}
+
+.detailcontainer > .moviecard > .movieinfo > figcaption {
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-align: justify;
+}

@@ -1,6 +1,7 @@
+import './MovieDetail.css';
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
 const MovieDetail = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
@@ -22,10 +23,12 @@ const MovieDetail = () => {
           </div>
           <div className="movieinfo">
             <h2>{mov.title}</h2>
-            <h4>Year: {mov.year}</h4>
+            <h4>{mov.year}</h4>
             <h4>{mov.phase.toUpperCase()}</h4>
-            <h4>Cast: {mov.cast.join(', ')} </h4>
-            <figcaption>Synopsis: {mov.synopsis}</figcaption>
+            <h4 className="h4">Cast</h4>
+            <figcaption>{mov.cast.join(', ')} </figcaption>
+            <h4 className="h4">Synopsis</h4>
+            <figcaption>{mov.synopsis}</figcaption>
           </div>
         </div>
       ))}

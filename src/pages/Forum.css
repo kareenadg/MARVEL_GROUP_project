@@ -12,20 +12,22 @@
   border-bottom: 2px solid var(--light-primary);
   width: 70vw;
   margin-bottom: 2rem;
+  padding: 0.7rem 0;
 }
 
 .forum > .forum-search img {
-  height: 28px;
+  height: 2rem;
 }
 .forum > .forum-search > input {
   height: 40px;
   background-color: transparent;
   border: none;
   text-transform: uppercase;
-  font-size: 26px;
   font-family: var(--font-heading);
   font-weight: 600;
   padding: 1rem 0;
+  font-size: 2rem;
+  outline: none;
 }
 
 .create-review {
@@ -50,12 +52,18 @@
   color: var(--dark-bg);
 }
 
+.create-review form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
 .create-review form input {
   height: 30px;
   width: 59vw;
   padding: 0 0.5rem;
   color: var(--dark-bg);
-  border: 0.5px solid var(--dark-bg);
+  border: 0.5px solid gray;
 }
 
 .create-review form textarea {
@@ -63,6 +71,7 @@
   width: 59vw;
   padding: 0 0.5rem;
   font-family: var(--font-body);
+  border: 0.5px solid gray;
 }
 
 .create-review form h3 {
@@ -71,11 +80,9 @@
   font-size: 16px;
 }
 
-.create-review form button {
-  height: 30px;
-  width: 100px;
+.create-review form .post-button {
   align-self: flex-end;
-  margin-top: 0.8rem;
+  margin-top: 1rem;
 }
 
 .create-review > .forum-form {
@@ -96,7 +103,6 @@
   gap: 2rem;
   width: 70vw;
   padding: 3rem 2rem;
-  color: var(--dark-bg);
   background-color: white;
   -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
   clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);

@@ -1,20 +1,19 @@
 import './Carousel.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 const Carousel = ({ images }) => {
-  const [current, setCurrent] = useState(1);
-  const nextImage = () => {
-    setCurrent(current + 1);
-  };
+  const [index, setIndex] = useState(0);
 
-  const prevImage = () => {
-    setCurrent(current - 1);
-    console.log(current);
-  };
+  useEffect(() => {
+    setTimeout(() => setIndex(index === images.length - 1 ? 0 : index + 1), 8000);
+  }, [index]);
   return (
     <section className="carousel-news">
-      <div className="carousel-wrapper">
+      <div
+        className="carousel-wrapper"
+        style={{ transform: `translate(${-index * 100}%, 0)` }}
+      >
         {images.map((item) => (
           <div key={item.id} className="carousel-card">
             <img src={item.image} alt={item.title} className="card-image" />
@@ -24,20 +23,6 @@ const Carousel = ({ images }) => {
             </div>
           </div>
         ))}
-        <div className="carousel-buttons">
-          <button onClick={() => prevImage()}>
-            <img
-              src="https://res.cloudinary.com/dnb4ujbgr/image/upload/v1675533027/Pokemons%20icons/arrow_back_chevron_direction_left_navigation_right_icon_123223_yll6zu.png"
-              alt="prev icon"
-            />
-          </button>
-          <button onClick={() => nextImage()}>
-            <img
-              src="https://res.cloudinary.com/dnb4ujbgr/image/upload/v1675533027/Pokemons%20icons/arrows_chevron_direction_left_move_next_right_icon_123222_kogexs.png"
-              alt="next icon"
-            />
-          </button>
-        </div>
       </div>
     </section>
   );

@@ -11,12 +11,12 @@ const Movies = () => {
   const [loaded, setLoaded] = useState(false);
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
-  const [faved, setFaved] = useState(false);
+
   const phases = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Phase 5'];
   const years = [
     2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023,
   ];
-
+  const [movieTitleFav, setMovieTitleFav] = useState([]);
   useEffect(() => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
       .then((res) => res.json())
@@ -25,6 +25,7 @@ const Movies = () => {
         setMovies(res);
         setFilteredMovies(res);
       });
+    checkFavs();
   }, []);
 
   const filteredPhase = (actualPhase) => {
@@ -50,6 +51,14 @@ const Movies = () => {
     const moviesCopy = [...movies];
     const movsort = moviesCopy.sort((a, b) => (a.year > b.year ? -1 : 1));
     return movsort;
+  };
+  const checkFavs = async () => {
+    const res = await fetch('https://63f9dd59473885d837d3ef84.mockapi.io/favorites');
+    const data = await res.json();
+    const userFav = data.filter((fav) => fav.username == localStorage.getItem('user'));
+    const userFavTitle = userFav.map((key) => key.title);
+
+    setMovieTitleFav(userFavTitle);
   };
 
   const createFavorite = (mov) => {
@@ -84,8 +93,8 @@ const Movies = () => {
     });
   };
 
-  const deleteFav = (id) => {
-    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites/${id}`, {
+  const deleteFav = (item) => {
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites?title=${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -125,7 +134,6 @@ const Movies = () => {
         <button
           onClick={() => {
             setFilteredMovies(sorted());
-            console.log(sorted());
           }}
         >
           BY RECENT DATE
@@ -133,7 +141,6 @@ const Movies = () => {
         <button
           onClick={() => {
             setFilteredMovies(movies);
-            console.log(movies);
           }}
         >
           CHRONOLOGICALLY
@@ -175,24 +182,23 @@ const Movies = () => {
                 >
                   ＋
                 </button>
-                {faved === false ? (
-                  <button
-                    onClick={() => {
+                {!movieTitleFav.includes(mov.title) ? (
+                  <input
+                    type="checkbox"
+                    className="heart"
+                    onChange={() => {
                       createFavorite(mov);
-                      setFaved(true);
                     }}
-                  >
-                    ♥
-                  </button>
+                  />
                 ) : (
-                  <button
-                    onClick={() => {
-                      deleteFav(mov.id);
-                      setFaved(false);
+                  <input
+                    type="checkbox"
+                    className="heart"
+                    checked={true}
+                    onChange={() => {
+                      deleteFav(mov.title);
                     }}
-                  >
-                    ♡
-                  </button>
+                  />
                 )}
               </div>
             </figure>

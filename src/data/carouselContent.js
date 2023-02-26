@@ -2,7 +2,7 @@ export const carouselContent = [
   {
     image:
       'https://res.cloudinary.com/dpidlverd/image/upload/v1677348943/Marvel/Ant-Man-and-The-Wasp-Quantumania-2023-Recenzja-1_za7gqk.jpg',
-    title: 'Ant-Man and the Wasp',
+    title: 'Ant-Man and The Wasp: Quantumania',
     subtitle: 'Out in February 2023',
     id: 1,
   },

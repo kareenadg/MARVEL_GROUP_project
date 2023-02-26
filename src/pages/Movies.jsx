@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
+  const [faved, setFaved] = useState(false);
   const phases = ['Phase 1', 'Phase 2', 'Phase 3', 'Phase 4', 'Phase 5'];
   const years = [
     2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023,
@@ -19,11 +20,6 @@ const Movies = () => {
         setFilteredMovies(res);
       });
   }, []);
-
-  const sorted = () => {
-    movies.sort((a, b) => (a.year > b.year ? -1 : 1));
-    setFilteredMovies(movies);
-  };
 
   const filteredPhase = (actualPhase) => {
     const filterPhase = movies.filter(
@@ -42,6 +38,12 @@ const Movies = () => {
       mov.title.toLowerCase().includes(keyword.toLowerCase()),
     );
     setFilteredMovies(filter);
+  };
+
+  const sorted = () => {
+    const moviesCopy = [...movies];
+    const movsort = moviesCopy.sort((a, b) => (a.year > b.year ? -1 : 1));
+    return movsort;
   };
 
   const createFavorite = (mov) => {
@@ -76,6 +78,15 @@ const Movies = () => {
     });
   };
 
+  const deleteFav = (id) => {
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
   return (
     <div className="movies">
       <div className="search">
@@ -98,8 +109,22 @@ const Movies = () => {
       </div>
       <div className="filters">
         <h3>Sort:</h3>
-        <button onClick={() => sorted(movies)}>BY DATE</button>
-        <button onClick={() => setFilteredMovies(movies)}>CHRONOLOGICALLY</button>
+        <button
+          onClick={() => {
+            setFilteredMovies(sorted());
+            console.log(sorted());
+          }}
+        >
+          BY RECENT DATE
+        </button>
+        <button
+          onClick={() => {
+            setFilteredMovies(movies);
+            console.log(movies);
+          }}
+        >
+          CHRONOLOGICALLY
+        </button>
         <select id="phases" onChange={(ev) => filteredPhase(ev.target.value)}>
           <option value="-">- Choose Phase</option>
           {phases.map((phase) => (
@@ -123,6 +148,7 @@ const Movies = () => {
             <Link to={`/movies/${mov.id}`}>
               <img src={mov.poster} alt={mov.title} />
             </Link>
+
             <h3>{mov.title}</h3>
             <button
               onClick={() => {
@@ -131,13 +157,25 @@ const Movies = () => {
             >
               ＋
             </button>
-            <button
-              onClick={() => {
-                createFavorite(mov);
-              }}
-            >
-              ♥️
-            </button>
+            {faved === false ? (
+              <button
+                onClick={() => {
+                  createFavorite(mov);
+                  setFaved(true);
+                }}
+              >
+                ♥
+              </button>
+            ) : (
+              <button
+                onClick={() => {
+                  deleteFav(mov.id);
+                  setFaved(false);
+                }}
+              >
+                ♡
+              </button>
+            )}
             <figcaption>{mov.year}</figcaption>
           </figure>
         ))}

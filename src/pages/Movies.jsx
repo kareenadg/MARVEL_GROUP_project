@@ -3,7 +3,12 @@ import './Movies.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { ThemeFunction } from '../context/themeContext';
+import Spinner from '../ui/Spinner';
+
 const Movies = () => {
+  const { changeTheme } = ThemeFunction();
+  const [loaded, setLoaded] = useState(false);
   const [movies, setMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [faved, setFaved] = useState(false);
@@ -16,6 +21,7 @@ const Movies = () => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
       .then((res) => res.json())
       .then((res) => {
+        setLoaded(true);
         setMovies(res);
         setFilteredMovies(res);
       });
@@ -89,7 +95,14 @@ const Movies = () => {
 
   return (
     <div className="movies">
-      <div className="search">
+      <div
+        className="search"
+        style={
+          localStorage.getItem('color') == 'dark'
+            ? { borderBottomColor: '#ffffff' }
+            : { borderBottomColor: '#1e1c1c' }
+        }
+      >
         {localStorage.getItem('color') === 'dark' ? (
           <img
             src="https://res.cloudinary.com/dnb4ujbgr/image/upload/v1677347391/magnifying-glass_pi3wxw-white_qq12kv.svg"
@@ -108,7 +121,7 @@ const Movies = () => {
         />
       </div>
       <div className="filters">
-        <h3>Sort:</h3>
+        <h3>SORT:</h3>
         <button
           onClick={() => {
             setFilteredMovies(sorted());
@@ -143,42 +156,50 @@ const Movies = () => {
         </select>
       </div>
       <div className="movies-container">
-        {filteredMovies.map((mov) => (
-          <figure key={mov.id}>
-            <Link to={`/movies/${mov.id}`}>
-              <img src={mov.poster} alt={mov.title} />
-            </Link>
-
-            <h3>{mov.title}</h3>
-            <button
-              onClick={() => {
-                createWatchlist(mov);
-              }}
-            >
-              ＋
-            </button>
-            {faved === false ? (
-              <button
-                onClick={() => {
-                  createFavorite(mov);
-                  setFaved(true);
-                }}
-              >
-                ♥
-              </button>
-            ) : (
-              <button
-                onClick={() => {
-                  deleteFav(mov.id);
-                  setFaved(false);
-                }}
-              >
-                ♡
-              </button>
-            )}
-            <figcaption>{mov.year}</figcaption>
-          </figure>
-        ))}
+        {loaded ? (
+          filteredMovies.map((mov) => (
+            <figure key={mov.id}>
+              <Link to={`/movies/${mov.id}`}>
+                <img src={mov.poster} alt={mov.title} />
+              </Link>
+              <div className="mov-title">
+                <h3>
+                  {mov.title} ({mov.year})
+                </h3>
+              </div>
+              <div className="mov-buttons">
+                <button
+                  onClick={() => {
+                    createWatchlist(mov);
+                  }}
+                >
+                  ＋
+                </button>
+                {faved === false ? (
+                  <button
+                    onClick={() => {
+                      createFavorite(mov);
+                      setFaved(true);
+                    }}
+                  >
+                    ♥
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {
+                      deleteFav(mov.id);
+                      setFaved(false);
+                    }}
+                  >
+                    ♡
+                  </button>
+                )}
+              </div>
+            </figure>
+          ))
+        ) : (
+          <Spinner />
+        )}
       </div>
     </div>
   );

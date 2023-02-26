@@ -31,7 +31,6 @@ const Footer = () => {
             </ul>
           </section>
         </div>
-        <span className="lineDivision"></span>
         <div className="underbox">
           <section className="socials">
             <ul>

@@ -3,9 +3,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .images {
   height: 541px;
-  width: 1920px;
+  width: 100%;
 }

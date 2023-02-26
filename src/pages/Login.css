@@ -71,13 +71,12 @@
   border-bottom: 2px solid #ffffffd8;
   transition: all 0.1s ease 0s;
   margin-bottom: 1.25rem;
-  text-transform: uppercase;
 }
 
 .loginInp:focus {
   border: 2px solid rgb(124, 138, 255);
-  transform: scale(1.05);
-  box-shadow: 13px 13px 100px #33303051, -13px -13px 100px #2f2c2c87;
+  transform: scale(1);
+  box-shadow: 10px 10px 50px #3330303d, -10px -10px 50px #2f2c2c34;
 }
 
 .btn {
@@ -90,7 +89,7 @@
   border-radius: 3px;
   letter-spacing: 1px;
   transition: all 0.2s linear;
-  cursor: pointer;
+  cursr: pointer;
   border: none;
   background: #fff;
   margin-top: 3rem;
@@ -106,7 +105,10 @@
 
 .box2 > h2 {
   text-transform: uppercase;
-  font-size: 1rem;
+  font-size: 0.7rem;
+  z-index: 2;
+  color: white;
+  margin: 20px;
 }
 .video {
   height: 650px;

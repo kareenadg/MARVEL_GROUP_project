@@ -30,7 +30,7 @@ export const carouselContent = [
   {
     image:
       'https://res.cloudinary.com/dpidlverd/image/upload/v1677349713/Marvel/captain-america-new-world-order-1200x640_ydfxp1.jpg',
-    title: 'Captain America New World Orders',
+    title: 'Captain America New World Order',
     subtitle: 'Out in May 2024',
     id: 5,
   },

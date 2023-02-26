@@ -28,7 +28,7 @@ const ButtonStyled = styled.button`
   }
 `;
 
-const Button = ({ text, action, variant, color, border, size }) => {
+const Button = ({ text, children, action, variant, color, border, size }) => {
   return (
     <ButtonStyled
       onClick={action}
@@ -38,6 +38,7 @@ const Button = ({ text, action, variant, color, border, size }) => {
       size={size}
     >
       {text}
+      {children}
     </ButtonStyled>
   );
 };

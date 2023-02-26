@@ -15,7 +15,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-evenly;
-  gap: 1rem;
 }
 
 .detailcontainer > .moviecard > .movieposter {
@@ -56,4 +55,8 @@
   font-weight: 400;
   letter-spacing: 0.2px;
   text-align: justify;
+}
+
+.sypnosis {
+  margin-bottom: 0.5rem;
 }

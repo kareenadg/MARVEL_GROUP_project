@@ -2,6 +2,8 @@ import './MovieDetail.css';
 
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import Button from '../ui/Buttons';
 const MovieDetail = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
@@ -28,7 +30,12 @@ const MovieDetail = () => {
             <h4 className="h4">Cast</h4>
             <figcaption>{mov.cast.join(', ')} </figcaption>
             <h4 className="h4">Synopsis</h4>
-            <figcaption>{mov.synopsis}</figcaption>
+            <figcaption className="sypnosis">{mov.synopsis}</figcaption>
+            <Button variant="red">
+              <a href={mov.trailer} target="_blank" rel="noopener noreferrer">
+                Trailer
+              </a>
+            </Button>
           </div>
         </div>
       ))}

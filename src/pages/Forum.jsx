@@ -1,12 +1,13 @@
 import './Forum.css';
 
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useDebounce } from 'use-debounce';
 
 import { ThemeFunction } from '../context/themeContext';
 import { UserContext } from '../context/userContext';
 import Avatar from '../ui/Avatar';
 import Button from '../ui/Buttons';
+import Spinner from '../ui/Spinner';
 
 const Forum = () => {
   const { changeTheme } = ThemeFunction();
@@ -17,6 +18,8 @@ const Forum = () => {
   const [keywordValue] = useDebounce(keyword, 500);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState('');
+  const titleRef = useRef(null);
+  const textRef = useRef(null);
 
   let today = new Date().toISOString();
 
@@ -63,8 +66,6 @@ const Forum = () => {
 
   return (
     <div className="forum">
-      {console.log(reviews)}
-
       <section
         className="forum-search"
         style={
@@ -99,11 +100,11 @@ const Forum = () => {
         ></input>
       </section>
       <section
-        className="create-review dark"
+        className="create-review"
         style={
           localStorage.getItem('color') == 'dark'
-            ? { backgroundColor: 'inherit' }
-            : { backgroundColor: 'inherit' }
+            ? { backgroundColor: '#1e1c1c' }
+            : { backgroundColor: 'white' }
         }
       >
         <div className="form-user">
@@ -118,52 +119,51 @@ const Forum = () => {
           <input
             type="text"
             placeholder="ie. Avengers review"
+            ref={titleRef}
             onChange={(ev) => setNewReview({ ...newReview, title: ev.target.value })}
           />
           <textarea
             placeholder="Introduce your review..."
+            ref={textRef}
             onChange={(ev) => setNewReview({ ...newReview, review: ev.target.value })}
           />
           <h3>{error}</h3>
-          <Button text="Post review" variant="red" className="post-button" />
+          <Button
+            text="Post review"
+            variant="red"
+            className="post-button"
+            action={() => {
+              titleRef.current.value = '';
+              textRef.current.value = '';
+            }}
+          />
         </form>
       </section>
       <section className="forum-content">
-        {console.log('filter', printReviews)}
         {loaded ? (
-          printReviews.map((review) =>
-            localStorage.getItem('color') === 'dark' ? (
-              <div
-                className="review-card"
-                key={review.id}
-                style={{ backgroundColor: '#1e1c1c' }}
-              >
-                <div className="review-user">
-                  <Avatar image={review.avatar} name={review.title} size="md" />
-                  <h3>{review.username}</h3>
-                </div>
-                <div className="review-content">
-                  <h2>{review.title}</h2>
-                  <h4>{review.date.slice(0, 10)}</h4>
-                  <p>{review.review}</p>
-                </div>
+          printReviews.map((review) => (
+            <div
+              className="review-card"
+              key={review.id}
+              style={
+                localStorage.getItem('color') == 'dark'
+                  ? { backgroundColor: '#1e1c1c' }
+                  : { backgroundColor: 'white' }
+              }
+            >
+              <div className="review-user">
+                <Avatar image={review.avatar} name={review.title} size="md" />
+                <h3>{review.username}</h3>
               </div>
-            ) : (
-              <div className="review-card" key={review.id}>
-                <div className="review-user">
-                  <Avatar image={review.avatar} name={review.title} size="md" />
-                  <h3>{review.username}</h3>
-                </div>
-                <div className="review-content">
-                  <h2>{review.title}</h2>
-                  <h4>{review.date.slice(0, 10)}</h4>
-                  <p>{review.review}</p>
-                </div>
+              <div className="review-content">
+                <h2>{review.title}</h2>
+                <h4>{review.date.slice(0, 10)}</h4>
+                <p>{review.review}</p>
               </div>
-            ),
-          )
+            </div>
+          ))
         ) : (
-          <h1>Loading...</h1>
+          <Spinner />
         )}
       </section>
     </div>

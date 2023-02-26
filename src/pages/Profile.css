@@ -3,16 +3,23 @@
   flex-direction: column;
   margin: 2rem 2rem;
   padding: 2rem 6rem;
-  gap: 1rem;
+  gap: 3rem;
   border-radius: 5px;
   font-family: inherit;
   color: inherit;
 }
 
+.profile-user {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  font-size: 1.6rem;
+}
 .options {
   display: flex;
   font-size: 3rem;
   gap: 2rem;
+  padding-bottom: 0.8rem;
 }
 
 .options > button {
@@ -78,14 +85,24 @@
 
 .review-card > .review-content {
   display: flex;
+  justify-content: flex-end;
+  width: 59vw;
+}
+
+.review-card > .review-content button {
+  align-self: flex-end;
+}
+
+.review-card > .review-text {
+  display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.darkline {
+/* .darkline {
   border-bottom: 1px solid var(--dark-primary);
 }
 
 .lightline {
   border-bottom: 3px solid var(--light-primary);
-}
+} */

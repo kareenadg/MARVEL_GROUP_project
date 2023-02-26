@@ -55,7 +55,14 @@ const MovsScroll = () => {
         </button>
         <div className="recent-movies" ref={ref}>
           {loaded ? (
-            recentMov.map((mov) => <img src={mov.poster} alt={mov.title} key={mov.id} />)
+            recentMov.map((mov) => (
+              <img
+                src={mov.poster}
+                alt={mov.title}
+                key={mov.id}
+                onClick={() => navigate(`/movies/${mov.id}`)}
+              />
+            ))
           ) : (
             <Spinner />
           )}

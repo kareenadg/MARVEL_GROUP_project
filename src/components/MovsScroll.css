@@ -23,6 +23,7 @@
   color: var(--dark-primary);
   filter: brightness(80%);
   background-color: transparent;
+  padding-right: 1rem;
 }
 .movie-carousel > .movie-carousel-head button:hover {
   color: inherit;
@@ -75,4 +76,11 @@
   max-width: 180px;
   object-fit: cover;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.recent-movies img:hover {
+  transform: translateY(-10px);
 }

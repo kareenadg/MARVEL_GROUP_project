@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 1rem;
   border: none;
-  margin: 2rem;
+  margin: 2rem auto;
   width: 100%;
 }
 
@@ -23,7 +23,6 @@
   color: var(--dark-primary);
   filter: brightness(80%);
   background-color: transparent;
-  padding-right: 1rem;
 }
 .movie-carousel > .movie-carousel-head button:hover {
   color: inherit;
@@ -32,6 +31,7 @@
 .movie-carousel .scroll-container {
   display: flex;
   align-items: center;
+  margin: 0 auto;
   gap: 0.2rem;
 }
 
@@ -83,4 +83,10 @@
 
 .recent-movies img:hover {
   transform: translateY(-10px);
+}
+
+@media screen and (max-width: 930px) {
+  .movie-carousel .scroll-container button {
+    display: none;
+  }
 }

@@ -32,10 +32,10 @@
 
 .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay {
   position: absolute;
-  width: 100%;
   height: 100%;
   background-color: transparent;
   display: flex;
+  flex-wrap: wrap;
   padding: 2rem;
   justify-content: flex-end;
   flex-direction: column;
@@ -48,10 +48,49 @@
   text-transform: uppercase;
   font-family: var(--font-heading);
   text-shadow: var(--dark-bg) 1px 0 15px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
   font-size: 28px;
   font-weight: 400;
   text-shadow: var(--dark-bg) 1px 0 15px;
+}
+
+@media screen and (max-width: 1300px) {
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 52px;
+  }
+
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .carousel-news {
+    height: 30vh;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > img {
+    height: 30vh;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 36px;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay {
+    padding: 1.5rem;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 18px;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 12px;
+  }
 }

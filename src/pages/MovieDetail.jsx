@@ -22,12 +22,10 @@ const MovieDetail = () => {
       <button className="back-movies" onClick={() => navigate('/movies')}>
         Back
       </button>
-      <input type="checkbox" checked />
       {movies.map((mov) => (
         <div className="moviecard" key={mov.id}>
-          <div className="movieposter">
-            <img src={mov.poster} alt={mov.title} />
-          </div>
+          <img src={mov.poster} alt={mov.title} className="movieposter" />
+
           <div className="movieinfo">
             <h2>{mov.title}</h2>
             <h4>{mov.year}</h4>

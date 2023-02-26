@@ -8,7 +8,7 @@ const Profile = () => {
   const [showFavourites, setShowFavourites] = useState(false);
   const [showWatchlist, setShowWatchlist] = useState(false);
   const [showComments, setShowComments] = useState(false);
-  const [showProfile, setShowProfile] = useState(true)
+  const [showProfile, setShowProfile] = useState(true);
 
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
@@ -23,7 +23,7 @@ const Profile = () => {
     const res = await fetch('https://63f9dd59473885d837d3ef84.mockapi.io/favorites');
     const data = await res.json();
     setFavs(data);
-    console.log("función petición a favoritos");
+    console.log('función petición a favoritos');
     filterFavs();
   };
 
@@ -32,7 +32,7 @@ const Profile = () => {
       fav.username.includes(localStorage.getItem('user')),
     );
     setFilteredFavs(filter);
-    console.log("función filtrado de favoritos");
+    console.log('función filtrado de favoritos');
     console.log(filteredFavs);
   };
 
@@ -97,7 +97,9 @@ const Profile = () => {
         <div className="options lightline">
           <button
             onClick={() => {
-              setShowFavourites(true); setShowWatchlist(false); setShowComments(false);
+              setShowFavourites(true);
+              setShowWatchlist(false);
+              setShowComments(false);
               filterFavs();
             }}
           >
@@ -129,9 +131,9 @@ const Profile = () => {
           <button
             onClick={() => {
               setShowFavourites(true);
-                setShowWatchlist(false);
-                setShowComments(false);
-                filterFavs();
+              setShowWatchlist(false);
+              setShowComments(false);
+              filterFavs();
             }}
           >
             Favourites
@@ -139,8 +141,10 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false), setShowWatchlist(true), setShowComments(false),
-              filterWatchlist();
+              setShowFavourites(false),
+                setShowWatchlist(true),
+                setShowComments(false),
+                filterWatchlist();
             }}
           >
             Watchlist
@@ -149,18 +153,16 @@ const Profile = () => {
           <button
             onClick={() => {
               setShowFavourites(false);
-                setShowWatchlist(false);
-                setShowComments(true);
-                filterComments();
+              setShowWatchlist(false);
+              setShowComments(true);
+              filterComments();
             }}
           >
             Comments
           </button>
         </div>
       )}
-      {showProfile &&(
-        <p> Hola. Algún texto?</p>
-      )}
+      {showProfile && <p> Hola. Algún texto?</p>}
       {showFavourites && (
         <div className="movies-container">
           {filteredFavs.length ? (

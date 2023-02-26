@@ -1,16 +1,20 @@
 .movies {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .filters {
-  margin-top: 2rem;
-  margin-left: 5rem;
+  margin: 2rem 8rem;
   display: flex;
-  gap: 2rem;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .search {
-  width: 45vw;
-  margin: 0 5rem;
+  width: 75vw;
+  margin: 0 13rem;
   padding: 0.7rem 0;
   border-bottom: 2px solid var(--dark-primary);
   display: flex;
@@ -29,9 +33,17 @@
   border: none;
   background: none;
   outline: none;
+  color: inherit;
+}
+
+.filters > h3 {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  margin: 0.5rem;
 }
 
 .filters > button {
+  margin: 0.5rem 0;
   width: fit-content;
   color: inherit;
   text-decoration: none;
@@ -62,8 +74,14 @@
 }
 
 .filters > select {
-  height: 1.5rem;
+  height: 1.6rem;
   width: fit-content;
+  margin: 0.5rem 0;
+  border: 2px solid var(--color-highlight);
+  border-radius: 2px;
+  padding: 0 0.5rem;
+  background: none;
+  color: inherit;
 }
 
 .movies-container {
@@ -72,7 +90,7 @@
   justify-content: center;
   align-items: center;
   gap: 2rem;
-  margin: 4rem 2rem;
+  margin: 1rem 10rem;
 }
 
 .movies-container > figure {
@@ -88,10 +106,81 @@
   width: 203px;
 }
 
+.movies-container > figure > a > img:hover {
+}
+
+/* h2 { 
+    top: 50%;
+    transform: translate3d(0, 60px, 0);
+    text-align: center; 
+  }
+  
+  p { 
+    opacity: 0;
+    bottom: 0;
+    transform: translate3d(0, -10px, 0);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: center;
+  }
+  
+  &:before {
+    content:'';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
+    z-index: 2;
+    bottom: -100%;
+    left: 0;
+  }
+  
+  &:hover:before {
+    bottom: 0;
+  }
+  
+  &:hover {
+    h2 {
+      bottom: 40px;
+      transform: translate3d(0, 20px, 0);
+    }
+    
+    p {
+      opacity: 1;
+      transform: translate3d(0, -30px, 0);
+    }
+  } */
+
 .movies-container > figure > button {
   background: none;
   border: none;
-  color: var(--light-bg);
+  color: inherit;
+}
+
+.movies-container > figure > figcaption {
+  margin: 0.2rem;
+}
+
+.mov-title {
+  height: 2.7rem;
+  font-size: 1rem;
+  font-family: var(--font-heading);
+  margin-top: 0.5rem;
+}
+
+.mov-title > h3 {
+  text-align: center;
+}
+
+.mov-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.mov-buttons > button {
+  font-size: 1.2rem;
+  border: none;
+  background: none;
 }
 
 /* .movies-container {

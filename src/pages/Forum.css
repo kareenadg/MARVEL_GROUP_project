@@ -125,5 +125,6 @@
 .review-card > .review-content {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2.1rem;
   gap: 0.8rem;
 }

@@ -20,10 +20,9 @@ const AvatarStyled = styled.div`
   }
 `;
 
-const Avatar = ({ image = '', name = 'Hola Adios', size }) => {
+const Avatar = ({ image = '', name = 'Hola', size }) => {
   const generateInitials = (name) => {
-    const splittedName = name.split(' ');
-    const initials = splittedName[0][0] + ' ' + splittedName[1][0];
+    const initials = name[0];
     return initials;
   };
 

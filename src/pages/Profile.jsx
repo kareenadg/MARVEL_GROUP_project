@@ -2,13 +2,13 @@ import './Profile.css';
 
 import { useEffect, useState } from 'react';
 
-import useFetch from '../hooks/useFetch';
 import Avatar from '../ui/avatar';
 
 const Profile = () => {
-  const [showFavourites, setShowFavourites] = useState(true);
+  const [showFavourites, setShowFavourites] = useState(false);
   const [showWatchlist, setShowWatchlist] = useState(false);
   const [showComments, setShowComments] = useState(false);
+  const [showProfile, setShowProfile] = useState(true)
 
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
@@ -23,6 +23,8 @@ const Profile = () => {
     const res = await fetch('https://63f9dd59473885d837d3ef84.mockapi.io/favorites');
     const data = await res.json();
     setFavs(data);
+    console.log("función petición a favoritos");
+    filterFavs();
   };
 
   const filterFavs = () => {
@@ -30,6 +32,8 @@ const Profile = () => {
       fav.username.includes(localStorage.getItem('user')),
     );
     setFilteredFavs(filter);
+    console.log("función filtrado de favoritos");
+    console.log(filteredFavs);
   };
 
   const getWatchlist = async () => {
@@ -39,7 +43,7 @@ const Profile = () => {
   };
 
   const filterWatchlist = () => {
-    const filter = favs.filter((watchItem) =>
+    const filter = watchlist.filter((watchItem) =>
       watchItem.username.includes(localStorage.getItem('user')),
     );
     setFilteredWatchlist(filter);
@@ -93,7 +97,7 @@ const Profile = () => {
         <div className="options lightline">
           <button
             onClick={() => {
-              setShowFavourites(true), setShowWatchlist(false), setShowComments(false);
+              setShowFavourites(true); setShowWatchlist(false); setShowComments(false);
               filterFavs();
             }}
           >
@@ -124,9 +128,9 @@ const Profile = () => {
         <div className="options darkline">
           <button
             onClick={() => {
-              setShowFavourites(true),
-                setShowWatchlist(false),
-                setShowComments(false),
+              setShowFavourites(true);
+                setShowWatchlist(false);
+                setShowComments(false);
                 filterFavs();
             }}
           >
@@ -135,7 +139,7 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false), setShowWatchlist(true), setShowComments(false);
+              setShowFavourites(false), setShowWatchlist(true), setShowComments(false),
               filterWatchlist();
             }}
           >
@@ -144,9 +148,9 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false),
-                setShowWatchlist(false),
-                setShowComments(true),
+              setShowFavourites(false);
+                setShowWatchlist(false);
+                setShowComments(true);
                 filterComments();
             }}
           >
@@ -154,7 +158,9 @@ const Profile = () => {
           </button>
         </div>
       )}
-
+      {showProfile &&(
+        <p> Hola. Algún texto?</p>
+      )}
       {showFavourites && (
         <div className="movies-container">
           {filteredFavs.length ? (
@@ -180,7 +186,7 @@ const Profile = () => {
               </figure>
             ))
           ) : (
-            <h4> Nothing to wathc yet</h4>
+            <h4> Nothing to watch yet</h4>
           )}
         </div>
       )}

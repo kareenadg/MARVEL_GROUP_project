@@ -53,12 +53,13 @@
   width: 203px;
 }
 
-.review-card {
+.forum-content > .review-card {
   display: flex;
   gap: 2rem;
   width: 70vw;
   padding: 3rem 2rem;
   background-color: white;
+  color: inherit;
   -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
   clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
 }

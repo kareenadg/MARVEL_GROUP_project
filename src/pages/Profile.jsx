@@ -2,13 +2,16 @@ import './Profile.css';
 
 import { useEffect, useState } from 'react';
 
+import { ThemeFunction } from '../context/themeContext';
 import Avatar from '../ui/avatar';
+import Button from '../ui/Buttons';
 
 const Profile = () => {
+  const { changeTheme } = ThemeFunction();
   const [showFavourites, setShowFavourites] = useState(false);
   const [showWatchlist, setShowWatchlist] = useState(false);
   const [showComments, setShowComments] = useState(false);
-  const [showProfile, setShowProfile] = useState(true)
+  let showProfile = true;
 
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
@@ -19,11 +22,29 @@ const Profile = () => {
   const [watchlist, setWatchlist] = useState([]);
   const [filteredWatchlist, setFilteredWatchlist] = useState([]);
 
+  let avatarImg;
+  const [filteredAvatarImg, setFilteredAvatarImg] = useState([]);
+
+  const getAvatarImg = async () => {
+    const res = await fetch('https://63ef8360271439b7fe703fa3.mockapi.io/usersData');
+    const data = await res.json();
+    avatarImg = data;
+
+    filterAvatarImg(data);
+  };
+  const filterAvatarImg = () => {
+    avatarImg.map((user) => {
+      user.username.includes(localStorage.getItem('user')) &&
+        setFilteredAvatarImg(user.avatar);
+    });
+    localStorage.setItem('avatarImg', filteredAvatarImg);
+  };
+
   const getFavourites = async () => {
     const res = await fetch('https://63f9dd59473885d837d3ef84.mockapi.io/favorites');
     const data = await res.json();
     setFavs(data);
-    console.log("función petición a favoritos");
+    console.log('función petición a favoritos');
     filterFavs();
   };
 
@@ -32,7 +53,7 @@ const Profile = () => {
       fav.username.includes(localStorage.getItem('user')),
     );
     setFilteredFavs(filter);
-    console.log("función filtrado de favoritos");
+    console.log('función filtrado de favoritos');
     console.log(filteredFavs);
   };
 
@@ -75,29 +96,25 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem(
-      'avatarImg',
-      'https://res.cloudinary.com/ddu2qdsdp/image/upload/v1677237031/Marvel/photo-1438761681033-6461ffad8d80_cuvfkr.jpg',
-    );
-    getForumInfo();
+    getAvatarImg();
+    localStorage.setItem('avatarImg', filteredAvatarImg);
     getFavourites();
+    getForumInfo();
     getWatchlist();
   }, []);
 
   return (
     <main className="profile">
-      <Avatar
-        name={localStorage.getItem('user')}
-        image="https://res.cloudinary.com/ddu2qdsdp/image/upload/v1677237031/Marvel/photo-1438761681033-6461ffad8d80_cuvfkr.jpg"
-        size="lg"
-      />
+      <Avatar name={localStorage.getItem('user')} image={filteredAvatarImg} size="lg" />
       <h2>{localStorage.getItem('user')}</h2>
 
       {localStorage.getItem('color') == 'ligth' ? (
         <div className="options lightline">
           <button
             onClick={() => {
-              setShowFavourites(true); setShowWatchlist(false); setShowComments(false);
+              setShowFavourites(true);
+              setShowWatchlist(false);
+              setShowComments(false);
               filterFavs();
             }}
           >
@@ -106,7 +123,9 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false), setShowWatchlist(true), setShowComments(false);
+              setShowFavourites(false);
+              setShowWatchlist(true);
+              setShowComments(false);
               filterWatchlist();
             }}
           >
@@ -115,10 +134,10 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false),
-                setShowWatchlist(false),
-                setShowComments(true),
-                filterComments();
+              setShowFavourites(false);
+              setShowWatchlist(false);
+              setShowComments(true);
+              filterComments();
             }}
           >
             Comments
@@ -129,9 +148,9 @@ const Profile = () => {
           <button
             onClick={() => {
               setShowFavourites(true);
-                setShowWatchlist(false);
-                setShowComments(false);
-                filterFavs();
+              setShowWatchlist(false);
+              setShowComments(false);
+              filterFavs();
             }}
           >
             Favourites
@@ -139,7 +158,9 @@ const Profile = () => {
 
           <button
             onClick={() => {
-              setShowFavourites(false), setShowWatchlist(true), setShowComments(false),
+              setShowFavourites(false);
+              setShowWatchlist(true);
+              setShowComments(false);
               filterWatchlist();
             }}
           >
@@ -149,18 +170,16 @@ const Profile = () => {
           <button
             onClick={() => {
               setShowFavourites(false);
-                setShowWatchlist(false);
-                setShowComments(true);
-                filterComments();
+              setShowWatchlist(false);
+              setShowComments(true);
+              filterComments();
             }}
           >
             Comments
           </button>
         </div>
       )}
-      {showProfile &&(
-        <p> Hola. Algún texto?</p>
-      )}
+      {showProfile && <h3>Welcome! this is your profile</h3>}
       {showFavourites && (
         <div className="movies-container">
           {filteredFavs.length ? (
@@ -175,7 +194,6 @@ const Profile = () => {
           )}
         </div>
       )}
-
       {showWatchlist && (
         <div className="movies-container">
           {filteredWatchlist.length ? (
@@ -190,12 +208,19 @@ const Profile = () => {
           )}
         </div>
       )}
-
       {showComments && (
         <section className="forum-content">
           {filteredComments.length ? (
             filteredComments.map((review) => (
-              <div className="review-card" key={review.id}>
+              <div
+                className="review-card"
+                key={review.id}
+                style={
+                  localStorage.getItem('color') == 'dark'
+                    ? { backgroundColor: '#1e1c1c' }
+                    : { backgroundColor: 'white' }
+                }
+              >
                 <div className="review-user">
                   <Avatar image={review.avatar} name={review.title} size="md" />
                   <h3>{review.username}</h3>
@@ -205,7 +230,14 @@ const Profile = () => {
                   <h4>{review.date.slice(0, 10)}</h4>
                   <p>{review.review}</p>
                   <p>{review.likes}</p>
-                  <button onClick={() => deleteComments(review.id)}>Delete</button>
+                  <Button
+                    text="Delete"
+                    className="delete-btn"
+                    variant="red"
+                    action={() => deleteComments(review.id)}
+                  >
+                    Delete
+                  </Button>
                 </div>
               </div>
             ))

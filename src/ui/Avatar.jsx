@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 const AvatarStyled = styled.div`
   width: ${({ size }) =>
     size === 'xl' ? '300px' : size === 'lg' ? '200px' : size === 'md' ? '100px' : '40px'};

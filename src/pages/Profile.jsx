@@ -51,6 +51,15 @@ const Profile = () => {
     setWatchlist(data);
   };
 
+  const deleteWatch = (id) => {
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/watchlist/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+  };
+
   const filterWatchlist = () => {
     const filter = watchlist.filter((watchItem) =>
       watchItem.username.includes(localStorage.getItem('user')),
@@ -69,6 +78,15 @@ const Profile = () => {
     console.log(userComments);
     console.log(sorted);
     setFilteredComments(sorted);
+  };
+
+  const deleteFav = (id) => {
+    fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   };
 
   const deleteComments = (id) => {
@@ -142,10 +160,26 @@ const Profile = () => {
               <figure key={item.id}>
                 <img src={item.poster} alt={item.title} />
                 <h3>{item.title}</h3>
+                <button
+                  className="deleteBtn"
+                  onClick={() => {
+                    deleteFav(item.id);
+                  }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/replica/1345823_xh4jg1.png"
+                    alt="basura"
+                    style={
+                      localStorage.getItem('color') == 'dark'
+                        ? { filter: 'invert(100)' }
+                        : { filter: 'none' }
+                    }
+                  />
+                </button>
               </figure>
             ))
           ) : (
-            <h4> No favourites yet</h4>
+            <h4> Welcome!</h4>
           )}
         </div>
       ) : showContent === 1 ? (
@@ -155,6 +189,23 @@ const Profile = () => {
               <figure key={item.id}>
                 <img src={item.poster} alt={item.title} />
                 <h3>{item.title}</h3>
+                <button
+                  className="deleteBtn"
+                  onClick={() => {
+                    deleteWatch(item.id);
+                    console.log(item.id);
+                  }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/replica/1345823_xh4jg1.png"
+                    alt="basura"
+                    style={
+                      localStorage.getItem('color') == 'dark'
+                        ? { filter: 'invert(100)' }
+                        : { filter: 'none' }
+                    }
+                  />
+                </button>
               </figure>
             ))
           ) : (

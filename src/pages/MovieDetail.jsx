@@ -1,12 +1,13 @@
 import './MovieDetail.css';
 
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import Button from '../ui/Buttons';
 const MovieDetail = () => {
   const { id } = useParams();
   const [movies, setMovies] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
@@ -18,6 +19,10 @@ const MovieDetail = () => {
 
   return (
     <div className="detailcontainer">
+      <button className="back-movies" onClick={() => navigate('/movies')}>
+        Back
+      </button>
+      <input type="checkbox" checked />
       {movies.map((mov) => (
         <div className="moviecard" key={mov.id}>
           <div className="movieposter">

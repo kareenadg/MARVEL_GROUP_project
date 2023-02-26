@@ -2,32 +2,36 @@ import styled from 'styled-components';
 import { keyframes } from 'styled-components';
 
 const breatheAnimation = keyframes`
- 0% {
-      transform: rotate(0);
-      animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
- 50% {
-      transform: rotate(900deg);
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
- 100% { height: 100px; width: 100px; opacity: 0.6; }`;
+ 
+ 100% {
+    transform: rotate(1turn);
+  }`;
 
 const SpinnerStyled = styled.span`
-  display: inline-block;
-  position: relative;
-  width: 80px;
-  height: 80px;
-  &:after {
-    content: ' ';
-    display: block;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #ff0000;
+  animation: spinner-e04l1k 1s infinite linear;
+  &::before,
+  &::after {
+    content: '';
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
     border-radius: 50%;
-    width: 0;
-    height: 0;
-    margin: 8px;
-    box-sizing: border-box;
-    border: 32px solid #fff;
-    border-color: #fff transparent #fff transparent;
-    animation: lds-hourglass 1.2s infinite;
+    animation-name: ${breatheAnimation};
+  }
+  &::before {
+    border-color: #ff0000;
+    animation: inherit;
+    animation-duration: 0.5s;
+    animation-direction: reverse;
+  }
+  &::after {
+    margin: 8.9px;
     animation-name: ${breatheAnimation};
   }
 `;

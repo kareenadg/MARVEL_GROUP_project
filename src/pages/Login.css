@@ -4,6 +4,7 @@
   height: 420px;
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-content: center;
@@ -17,6 +18,7 @@
 .box2 {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
@@ -31,6 +33,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  flex-wrap: wrap;
   align-content: center;
   width: 88%;
   margin-right: 1.5rem;
@@ -49,6 +52,7 @@
   flex-direction: row;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
   width: 88%;
   margin-right: 1.5rem;
 }
@@ -81,6 +85,7 @@
 
 .btn {
   display: flex;
+  flex-wrap: wrap;
   height: 3rem;
   width: 100px;
   justify-content: center;
@@ -89,7 +94,7 @@
   border-radius: 3px;
   letter-spacing: 1px;
   transition: all 0.2s linear;
-  cursr: pointer;
+  cursor: pointer;
   border: none;
   background: #fff;
   margin-top: 3rem;
@@ -114,6 +119,7 @@
   height: 650px;
   overflow: hidden;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   z-index: 1;

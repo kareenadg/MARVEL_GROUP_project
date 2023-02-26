@@ -11,7 +11,9 @@ const Profile = () => {
   const [showFavourites, setShowFavourites] = useState(false);
   const [showWatchlist, setShowWatchlist] = useState(false);
   const [showComments, setShowComments] = useState(false);
+
   let showProfile = true;
+
 
   const [comments, setComments] = useState([]);
   const [filteredComments, setFilteredComments] = useState([]);
@@ -179,7 +181,11 @@ const Profile = () => {
           </button>
         </div>
       )}
+
       {showProfile && <h3>Welcome! this is your profile</h3>}
+
+    
+
       {showFavourites && (
         <div className="movies-container">
           {filteredFavs.length ? (

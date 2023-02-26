@@ -17,6 +17,7 @@ const Movies = () => {
     2008, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023,
   ];
   const [movieTitleFav, setMovieTitleFav] = useState([]);
+  const [movieTitleWatched, setMovieTitleWatched] = useState([]);
   useEffect(() => {
     fetch('https://63ef88eb4d5eb64db0cbc71f.mockapi.io/movies')
       .then((res) => res.json())
@@ -26,6 +27,7 @@ const Movies = () => {
         setFilteredMovies(res);
       });
     checkFavs();
+    checkWatched();
   }, []);
 
   const filteredPhase = (actualPhase) => {
@@ -60,6 +62,16 @@ const Movies = () => {
 
     setMovieTitleFav(userFavTitle);
   };
+  const checkWatched = async () => {
+    const res = await fetch('https://63f9dd59473885d837d3ef84.mockapi.io/watchlist');
+    const data = await res.json();
+    const userWatched = data.filter(
+      (watched) => watched.username == localStorage.getItem('user'),
+    );
+    const userWatchedTitle = userWatched.map((key) => key.title);
+
+    setMovieTitleWatched(userWatchedTitle);
+  };
 
   const createFavorite = (mov) => {
     const NewFav = {
@@ -93,14 +105,14 @@ const Movies = () => {
     });
   };
 
-  const deleteFav = (item) => {
+  /*   const deleteFav = (item) => {
     fetch(`https://63f9dd59473885d837d3ef84.mockapi.io/favorites?title=${item}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
       },
     });
-  };
+  }; */
 
   return (
     <div className="movies">
@@ -166,39 +178,50 @@ const Movies = () => {
         {loaded ? (
           filteredMovies.map((mov) => (
             <figure key={mov.id}>
-              <Link to={`/movies/${mov.id}`}>
-                <img src={mov.poster} alt={mov.title} />
-              </Link>
+              <div className="mov-poster">
+                <Link to={`/movies/${mov.id}`}>
+                  <img src={mov.poster} alt={mov.title} />
+                </Link>
+                <div className="overlay">
+                  <p>See movie details</p>
+                </div>
+              </div>
               <div className="mov-title">
                 <h3>
                   {mov.title} ({mov.year})
                 </h3>
               </div>
               <div className="mov-buttons">
-                <button
-                  onClick={() => {
-                    createWatchlist(mov);
-                  }}
-                >
-                  ＋
-                </button>
-                {!movieTitleFav.includes(mov.title) ? (
-                  <input
-                    type="checkbox"
-                    className="heart"
-                    onChange={() => {
-                      createFavorite(mov);
+                {!movieTitleWatched.includes(mov.title) && (
+                  <button
+                    onClick={() => {
+                      createWatchlist(mov);
                     }}
-                  />
-                ) : (
-                  <input
-                    type="checkbox"
-                    className="heart"
-                    checked={true}
-                    onChange={() => {
-                      deleteFav(mov.title);
-                    }}
-                  />
+                  >
+                    +
+                  </button>
+                )}
+                {!movieTitleFav.includes(mov.title) && (
+                  <label className="container">
+                    <input
+                      type="checkbox"
+                      className="heart"
+                      onChange={() => {
+                        createFavorite(mov);
+                      }}
+                    />
+                    <div className="checkmark">
+                      <svg viewBox="0 0 256 256">
+                        <rect fill="none" height="256" width="256"></rect>
+                        <path
+                          d="M224.6,51.9a59.5,59.5,0,0,0-43-19.9,60.5,60.5,0,0,0-44,17.6L128,59.1l-7.5-7.4C97.2,28.3,59.2,26.3,35.9,47.4a59.9,59.9,0,0,0-2.3,87l83.1,83.1a15.9,15.9,0,0,0,22.6,0l81-81C243.7,113.2,245.6,75.2,224.6,51.9Z"
+                          strokeWidth="20px"
+                          stroke="#FF5353"
+                          fill="none"
+                        ></path>
+                      </svg>
+                    </div>
+                  </label>
                 )}
               </div>
             </figure>

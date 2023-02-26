@@ -13,8 +13,9 @@
 }
 
 .search {
-  width: 75vw;
-  margin: 0 13rem;
+  max-width: 75vw;
+  min-width: 75vw;
+  margin: 0 auto;
   padding: 0.7rem 0;
   border-bottom: 2px solid var(--dark-primary);
   display: flex;
@@ -43,7 +44,7 @@
 }
 
 .filters > button {
-  margin: 0.5rem 0;
+  margin: 0.5rem;
   width: fit-content;
   color: inherit;
   text-decoration: none;
@@ -76,7 +77,7 @@
 .filters > select {
   height: 1.6rem;
   width: fit-content;
-  margin: 0.5rem 0;
+  margin: 0.5rem;
   border: 2px solid var(--color-highlight);
   border-radius: 2px;
   padding: 0 0.5rem;
@@ -101,55 +102,53 @@
   align-items: center;
 }
 
-.movies-container > figure > a > img {
+.mov-poster {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.mov-poster > a > img {
+  display: block;
   height: 300px;
   width: 203px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out,
+    filter 0.3s ease-in-out;
 }
 
-.movies-container > figure > a > img:hover {
+.mov-poster > .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.199);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-/* h2 { 
-    top: 50%;
-    transform: translate3d(0, 60px, 0);
-    text-align: center; 
-  }
-  
-  p { 
-    opacity: 0;
-    bottom: 0;
-    transform: translate3d(0, -10px, 0);
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-align: center;
-  }
-  
-  &:before {
-    content:'';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(72,76,97,0) 0%, rgba(72,76,97,0.8) 75%);
-    z-index: 2;
-    bottom: -100%;
-    left: 0;
-  }
-  
-  &:hover:before {
-    bottom: 0;
-  }
-  
-  &:hover {
-    h2 {
-      bottom: 40px;
-      transform: translate3d(0, 20px, 0);
-    }
-    
-    p {
-      opacity: 1;
-      transform: translate3d(0, -30px, 0);
-    }
-  } */
+.mov-poster:hover img {
+  opacity: 0.5;
+  transform: scale(1.1);
+}
+
+.mov-poster:hover .overlay {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.mov-poster.overlay p {
+  font-size: 16px;
+}
 
 .movies-container > figure > button {
   background: none;
@@ -174,16 +173,40 @@
 
 .mov-buttons {
   display: flex;
+  align-items: center;
   gap: 1rem;
 }
 
 .mov-buttons > button {
-  font-size: 1.2rem;
+  font-size: 2rem;
   border: none;
   background: none;
+  color: inherit;
 }
 
-/* .movies-container {
+.mov-buttons > button:focus {
+  color: var(--color-highlight);
+}
+
+#phases > option {
+  background-color: rgba(0, 0, 0, 0.642);
+  color: inherit;
+}
+
+#years > option {
+  background-color: rgba(0, 0, 0, 0.642);
+  color: inherit;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
   display: block;
   position: relative;
   cursor: pointer;
@@ -195,22 +218,22 @@
 .checkmark {
   top: 0;
   left: 0;
-  height: 2em;
-  width: 2em;
+  height: 1em;
+  width: 1em;
   transition: 100ms;
   animation: dislike_effect 400ms ease;
 }
 
-.movies-container button:checked ~ .checkmark path {
-  fill: #FF5353;
+.container input:checked ~ .checkmark path {
+  fill: #ff5353;
   stroke-width: 0;
 }
 
-.movies-container button:checked ~ .checkmark {
+.container input:checked ~ .checkmark {
   animation: like_effect 400ms ease;
 }
 
-.movies-container button:hover {
+.container:hover {
   transform: scale(1.1);
 }
 
@@ -240,4 +263,4 @@
   100% {
     transform: scale(1);
   }
-} */
+}

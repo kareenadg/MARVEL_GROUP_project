@@ -128,3 +128,29 @@
   margin-bottom: 2.1rem;
   gap: 0.8rem;
 }
+
+@media screen and (max-width: 600px) {
+  .forum > .forum-search {
+    width: 85vw;
+    padding-bottom: 0;
+  }
+  .forum > .forum-search img {
+    height: 1.5rem;
+  }
+  .forum > .forum-search > input {
+    font-size: 24px;
+  }
+  .create-review {
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+  }
+  .create-review form {
+    width: 70vw;
+  }
+
+  .forum-content > .review-card {
+    flex-direction: column;
+    width: 85vw;
+  }
+}

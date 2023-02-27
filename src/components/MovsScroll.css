@@ -21,7 +21,7 @@
 .movie-carousel > .movie-carousel-head button {
   border: none;
   color: var(--dark-primary);
-  filter: brightness(80%);
+  filter: brightness(60%);
   background-color: transparent;
 }
 .movie-carousel > .movie-carousel-head button:hover {

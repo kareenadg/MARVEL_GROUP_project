@@ -117,7 +117,7 @@
     filter 0.3s ease-in-out;
 }
 
-.mov-poster > .overlay {
+.mov-poster > a > .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -136,17 +136,17 @@
   padding: 20px;
 }
 
-.mov-poster:hover img {
+.mov-poster > a:hover img {
   opacity: 0.5;
   transform: scale(1.1);
 }
 
-.mov-poster:hover .overlay {
+.mov-poster > a:hover .overlay {
   opacity: 1;
   transform: scale(1);
 }
 
-.mov-poster.overlay p {
+.mov-poster > a > .overlay > p {
   font-size: 16px;
 }
 

@@ -59,8 +59,8 @@
   height: 300px;
   width: 203px;
 }
-.movies-container > figure > h3{
-  margin-top:1rem;
+.movies-container > figure > h3 {
+  margin-top: 1rem;
 }
 .forum-content > .review-card {
   display: flex;
@@ -101,10 +101,10 @@
   gap: 0.8rem;
 }
 
-.deleteBtn > img{
-  height:25px;
+.deleteBtn > img {
+  height: 25px;
   width: 25px;
-  margin:1.2rem;
+  margin: 1.2rem;
 }
 /* .darkline {
   border-bottom: 1px solid var(--dark-primary);

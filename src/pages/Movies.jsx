@@ -181,10 +181,10 @@ const Movies = () => {
               <div className="mov-poster">
                 <Link to={`/movies/${mov.id}`}>
                   <img src={mov.poster} alt={mov.title} />
+                  <div className="overlay">
+                    <p>See more details</p>
+                  </div>
                 </Link>
-                <div className="overlay">
-                  <p>See movie details</p>
-                </div>
               </div>
               <div className="mov-title">
                 <h3>

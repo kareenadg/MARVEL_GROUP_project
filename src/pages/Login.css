@@ -89,7 +89,7 @@
   border-radius: 3px;
   letter-spacing: 1px;
   transition: all 0.2s linear;
-  cursr: pointer;
+  cursor: pointer;
   border: none;
   background: #fff;
   margin-top: 3rem;
@@ -123,4 +123,22 @@ video {
   transform: scale(1.2);
   z-index: 1;
   filter: brightness(40%);
+}
+
+@media screen and (max-width: 900px) {
+  video {
+    transform: scale(2);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .login-container {
+    width: 70vw;
+  }
+  .logoMarvel > img {
+    width: 200px;
+  }
+  video {
+    transform: scale(5);
+  }
 }

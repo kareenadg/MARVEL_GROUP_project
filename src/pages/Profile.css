@@ -7,6 +7,8 @@
   border-radius: 5px;
   font-family: inherit;
   color: inherit;
+  min-height: 62vh;
+  width: 100%;
 }
 
 .profile-user {
@@ -15,14 +17,15 @@
   gap: 3rem;
   font-size: 1.6rem;
 }
-.options {
+.profile .options {
   display: flex;
   font-size: 3rem;
   gap: 2rem;
   padding-bottom: 0.8rem;
+  width: 100%;
 }
 
-.options > button {
+.profile .options > button {
   border: none;
   background-color: transparent;
   color: inherit;
@@ -35,19 +38,20 @@
   transition: all 0.5s;
 }
 
-.options > button:hover {
+.profile .options > button:hover {
   scale: 1.05;
 }
 
-.movies-container {
+.profile .movies-container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 2rem;
+  width: 100%;
+  margin: 0;
 }
 
-.movies-container > figure {
+.profile .movies-container > figure {
   height: 410px;
   width: 230px;
   display: flex;
@@ -55,14 +59,14 @@
   align-items: center;
 }
 
-.movies-container > figure > img {
+.profile .movies-container > figure > img {
   height: 300px;
-  width: 203px;
 }
-.movies-container > figure > h3{
-  margin-top:1rem;
+.profile .movies-container > figure .title h3 {
+  margin-top: 1rem;
+  height: 60px;
 }
-.forum-content > .review-card {
+.profile .forum-content > .review-card {
   display: flex;
   gap: 2rem;
   width: 70vw;
@@ -73,43 +77,70 @@
   clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
 }
 
-.review-card > .review-user {
+.profile .review-card > .review-user {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
 }
 
-.review-card > .review-user > h3 {
+.profile .review-card > .review-user > h3 {
   text-align: center;
   font-size: 16px;
 }
 
-.review-card > .review-content {
+.profile .review-card > .review-content {
   display: flex;
   justify-content: flex-end;
   width: 59vw;
 }
 
-.review-card > .review-content button {
+.profile .review-card > .review-content button {
   align-self: flex-end;
 }
 
-.review-card > .review-text {
+.profile .review-card > .review-text {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.deleteBtn > img{
-  height:25px;
+.profile .deleteBtn > img {
+  height: 25px;
   width: 25px;
-  margin:1.2rem;
-}
-/* .darkline {
-  border-bottom: 1px solid var(--dark-primary);
+  margin: 1.2rem;
 }
 
-.lightline {
-  border-bottom: 3px solid var(--light-primary);
-} */
+@media screen and (max-width: 900px) {
+  .profile {
+    margin: 2rem 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .profile .profile-user {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .profile .profile-user h2 {
+    font-size: 18px;
+  }
+  .profile .options {
+    gap: 1rem;
+    width: 100%;
+    justify-content: center;
+    border-bottom: 0;
+    margin: 0;
+  }
+  .profile .options > button {
+    font-size: 12px;
+  }
+  .profile .forum-content {
+    align-items: center;
+  }
+  .profile .forum-content > .review-card {
+    flex-direction: column;
+  }
+  .profile.movies-container {
+    align-items: center;
+  }
+}

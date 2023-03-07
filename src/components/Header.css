@@ -79,7 +79,7 @@ header > ul > li > .toggle > .l:before {
   width: 35px;
   position: absolute;
   right: 52px;
-  top: 2%;
+  top: 3.1%;
   transition: all 0.9s;
 }
 header > ul > li > .toggle > .l:checked::before {

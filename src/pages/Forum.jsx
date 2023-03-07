@@ -62,7 +62,7 @@ const Forum = () => {
 
   useEffect(() => {
     getReviews();
-  }, [keywordValue]);
+  }, []);
 
   return (
     <div className="forum">

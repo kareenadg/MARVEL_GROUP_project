@@ -167,7 +167,7 @@ const Profile = () => {
                   }}
                 >
                   <img
-                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/replica/1345823_xh4jg1.png"
+                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/Resources/icons/1345823_xh4jg1.png"
                     alt="basura"
                     style={
                       localStorage.getItem('color') == 'dark'
@@ -197,7 +197,7 @@ const Profile = () => {
                   }}
                 >
                   <img
-                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/replica/1345823_xh4jg1.png"
+                    src="https://res.cloudinary.com/dpidlverd/image/upload/v1677446011/Resources/icons/1345823_xh4jg1.png"
                     alt="basura"
                     style={
                       localStorage.getItem('color') == 'dark'

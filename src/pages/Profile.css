@@ -7,8 +7,7 @@
   border-radius: 5px;
   font-family: inherit;
   color: inherit;
-  min-height: 62vh;
-  width: 100%;
+  min-height: 62.8vh;
 }
 
 .profile-user {
@@ -116,6 +115,9 @@
 @media screen and (max-width: 900px) {
   .profile {
     margin: 2rem 0;
+  }
+  .profile .movies-container > figure .title h3 {
+    height: 60px;
   }
 }
 @media screen and (max-width: 600px) {

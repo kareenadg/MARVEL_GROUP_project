@@ -26,6 +26,7 @@
 }
 .movie-carousel > .movie-carousel-head button:hover {
   color: inherit;
+  filter: brightness(100%);
 }
 
 .movie-carousel .scroll-container {

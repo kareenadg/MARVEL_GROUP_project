@@ -2,10 +2,10 @@
 
 :root {
   --color-highlight: #e11b22;
-  --dark-bg: #1e1c1c;
-  --dark-primary: #f5f5f5;
-  --light-bg: #f5f5f5;
-  --light-primary: #1e1c1c;
+  --dark-bg: #111010;
+  --dark-primary: #f8f8f8;
+  --light-bg: #f8f8f8;
+  --light-primary: #111010;
 
   --font-heading: 'Roboto Condensed', sans-serif;
   --font-body: 'Roboto', sans-serif;
@@ -19,6 +19,28 @@
   text-decoration: none;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-body);
+  width: 100%;
+}
+
+.light {
+  background-color: var(--light-bg);
+  color: var(--light-primary);
+  transition: all ease-in-out 0.8s;
+}
+.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-primary);
+  transition: all ease-in-out 0.8s;
+}
+
 button {
   cursor: pointer;
+}
+a {
+  color: inherit;
 }

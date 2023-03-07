@@ -1,0 +1,13 @@
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 67.5vh;
+}
+
+.images {
+  height: 541px;
+  width: 100%;
+}

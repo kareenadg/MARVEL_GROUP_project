@@ -1,0 +1,116 @@
+header {
+  width: 100%;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 1rem 2rem;
+}
+header > .logo_header {
+  width: 120px;
+}
+header > .logo_header > img {
+  width: 100%;
+}
+header > ul {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: auto;
+}
+header > ul > li > a {
+  padding-bottom: 0.3rem;
+  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+  -webkit-transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+}
+header > ul > li > .active {
+  border-bottom: var(--color-highlight) solid 2px;
+}
+
+header > ul > li > .logoutbtn {
+  width: auto;
+  background: none;
+  border: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  animation: none;
+}
+
+header > ul > li > .logoutbtn:hover {
+  box-shadow: none;
+  transform: translate(0);
+}
+
+header > ul > li > .logoutbtn > img {
+  width: 20px;
+  filter: saturate(100%);
+}
+header > ul > li > .logoutbtn > .darkicon {
+  filter: invert(100%);
+}
+
+header > ul > li > .toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+header > ul > li > .toggle > .l {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  width: 50px;
+  height: 25px;
+  background-color: rgba(240, 248, 255, 0.177);
+  border-radius: 50px;
+  border: 2px solid rgba(108, 106, 106, 0.855);
+}
+header > ul > li > .toggle > .l:before {
+  content: '';
+  background-image: url('https://res.cloudinary.com/do7bnejaz/image/upload/v1677315298/Icons/icons8-captain-america-30_yr1waj.png');
+  background-size: cover;
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  right: 52px;
+  top: 3.1%;
+  transition: all 0.9s;
+}
+header > ul > li > .toggle > .l:checked::before {
+  transform: translate(100%);
+}
+header > ul > li > .toggle > .l:checked {
+  background-color: rgba(12, 12, 12, 0.285);
+}
+
+@media screen and (max-width: 1200px) {
+  header {
+    gap: 1rem;
+  }
+
+  header > ul {
+    gap: 1rem;
+  }
+
+  header > ul > li > .toggle > .l:before {
+    right: 52px;
+    top: 3.5%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+  header > ul > li > .toggle > .l:before {
+    right: 28px;
+    top: 11%;
+  }
+}

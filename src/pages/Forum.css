@@ -1,0 +1,156 @@
+.forum {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0 5rem 0;
+}
+.forum > .forum-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 2px solid var(--light-primary);
+  width: 70vw;
+  margin-bottom: 2rem;
+  padding: 0.7rem 0;
+}
+
+.forum > .forum-search img {
+  height: 2rem;
+}
+.forum > .forum-search > input {
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  padding: 1rem 0;
+  font-size: 2rem;
+  outline: none;
+  color: inherit;
+}
+
+.create-review {
+  display: flex;
+  gap: 2rem;
+  width: 70vw;
+  padding: 3rem 2rem;
+  background-color: white;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
+}
+
+.create-review > .form-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-review > .form-user h3 {
+  font-size: 16px;
+  color: inherit;
+}
+
+.create-review form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 59vw;
+}
+
+.create-review form input {
+  height: 30px;
+  width: 100%;
+  padding: 0 0.5rem;
+  color: var(--dark-bg);
+  border: 0.5px solid #808080;
+}
+
+.create-review form textarea {
+  height: 50px;
+  width: 100%;
+  padding: 0 0.5rem;
+  font-family: var(--font-body);
+  border: 0.5px solid gray;
+}
+
+.create-review form h3 {
+  color: inherit;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.create-review form .post-button {
+  align-self: flex-end;
+  margin-top: 1rem;
+}
+
+.create-review > .forum-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.forum-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.forum-content > .review-card {
+  display: flex;
+  gap: 2rem;
+  width: 70vw;
+  padding: 3rem 2rem;
+  background-color: white;
+  -webkit-clip-path: polygon(0 0, 0 100%, 100% 100%, 100% 25%, 75% 0);
+  clip-path: polygon(3% 0%, 100% 0%, 100% 83%, 96% 100%, 0 100%, 0 15%);
+}
+
+.review-card > .review-user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.review-card > .review-user > h3 {
+  text-align: center;
+  font-size: 16px;
+}
+
+.review-card > .review-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.1rem;
+  gap: 0.8rem;
+}
+
+@media screen and (max-width: 600px) {
+  .forum > .forum-search {
+    width: 85vw;
+    padding-bottom: 0;
+  }
+  .forum > .forum-search img {
+    height: 1.5rem;
+  }
+  .forum > .forum-search > input {
+    font-size: 24px;
+  }
+  .create-review {
+    flex-direction: column;
+    align-items: center;
+    width: 85vw;
+  }
+  .create-review form {
+    width: 70vw;
+  }
+
+  .forum-content > .review-card {
+    flex-direction: column;
+    width: 85vw;
+  }
+}

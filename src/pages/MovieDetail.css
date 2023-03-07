@@ -1,0 +1,95 @@
+.detailcontainer {
+  padding: 4rem 3rem;
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detailcontainer .back-movies {
+  margin: 0 0 2.5rem 4rem;
+  border: none;
+  background-color: transparent;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-highlight);
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.detailcontainer > .moviecard {
+  width: 66vw;
+  height: 100%;
+  display: flex;
+  gap: 8rem;
+  justify-content: center;
+}
+
+.detailcontainer > .moviecard > .movieposter {
+  display: flex;
+  height: 450px;
+}
+.detailcontainer > .moviecard > .movieposter > img {
+  object-fit: cover;
+  border-radius: 4px;
+}
+.detailcontainer > .moviecard > .movieinfo {
+  max-width: 50rem;
+  color: inherit;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.detailcontainer > .moviecard > .movieinfo > h2 {
+  font-family: var(--font-heading);
+  color: var(--color-highlight);
+  border-bottom: var(--color-highlight) 1.5px solid;
+  font-weight: 900;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-size: 28px;
+}
+.detailcontainer > .moviecard > .movieinfo > .h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-align: justify;
+  color: var(--color-highlight);
+  text-transform: uppercase;
+}
+
+.detailcontainer > .moviecard > .movieinfo > figcaption {
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-align: justify;
+}
+
+.sypnosis {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1100px) {
+  .detailcontainer > .moviecard {
+    gap: 4rem;
+  }
+  .detailcontainer > .moviecard > .movieposter {
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .detailcontainer .back-movies {
+    margin: 0 0 2rem 0;
+  }
+  .detailcontainer > .moviecard {
+    flex-direction: column;
+    align-items: center;
+    width: 80vw;
+  }
+  .detailcontainer > .moviecard > .movieposter {
+    width: 270px;
+    height: 100%;
+  }
+}

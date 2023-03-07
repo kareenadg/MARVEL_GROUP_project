@@ -1,0 +1,96 @@
+.carousel-news {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-news > .carousel-wrapper {
+  position: relative;
+  width: 100%;
+  white-space: nowrap;
+  transition: 2s ease;
+}
+
+.carousel-news > .carousel-wrapper > .carousel-card {
+  display: inline-block;
+  overflow: hidden;
+  width: 100%;
+  transition: all 0.9s;
+  -webkit-transition: all 0.5s;
+  transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+  -webkit-transition-timing-function: cubic-bezier(1, 0.46, 0.48, 1.68);
+}
+
+.carousel-news > .carousel-wrapper > .carousel-card > img {
+  object-fit: cover;
+  width: 100%;
+  height: 60vh;
+  z-index: 1;
+  position: absolute;
+}
+
+.carousel-news > .carousel-wrapper > .carousel-card > .card-overlay {
+  position: absolute;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  justify-content: flex-end;
+  flex-direction: column;
+  z-index: 2;
+  color: white;
+}
+
+.carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+  font-size: 72px;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
+  text-shadow: var(--dark-bg) 1px 0 15px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+  font-size: 28px;
+  font-weight: 400;
+  text-shadow: var(--dark-bg) 1px 0 15px;
+}
+
+@media screen and (max-width: 1300px) {
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 52px;
+  }
+
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 930px) {
+  .carousel-news {
+    height: 30vh;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > img {
+    height: 30vh;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 36px;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay {
+    padding: 1.5rem;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h2 {
+    font-size: 18px;
+  }
+  .carousel-news > .carousel-wrapper > .carousel-card > .card-overlay > h3 {
+    font-size: 12px;
+  }
+}
